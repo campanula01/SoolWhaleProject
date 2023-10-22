@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.soolwhale.client.order.dao.OrderDao">
+	
+	<resultMap type="order" id="orderMap" >
+		<id column="order_num" property="orderNum"/>
+		<association property="payment">
+			<result column="payment_num" property="paymentNum"/>
+			<result column="use_point" property="userPoint"/>
+			<result column="delivery_charge" property="deliveryCharge"/>
+			<result column="payment_date" property="paymentDate"/>
+			<result column="addr_num" property="addrNum"/>
+			<result column="user_num" property="userNum"/>
+			<result column="delivery_yn" property="deliveryYN"/>
+			
+			<result column="pay_amount" property="payAmount"/>
+		
+			<result column="project_num" property="projectNum"/>
+			<result column="payment_method" property="paymentMethod"/>
+			<result column="add_point" property="addPoint"/>
+		</association>
+	</resultMap>
+	
+	<!-- list  -->
+	<select id="orderList" parameterType="order" resultMap="orderMap">
+		SELECT wp.payment_num, wp.payment_date, wp.project_num, wp.delivery_yn, wp.user_num, wpj.title, wp.delivery_charge, wp.pay_amount
+		FROM w_payment wp
+		INNER JOIN w_project wpj ON wp.user_num = wpj.user_num
+		WHERE wp.user_num = 'U2023091911554916'
+		ORDER BY wp.payment_num DESC
+	</select>
+
+		<!-- 상세 페이지를 위한 게시물 조회 - 썸네일 제외 -->
+	<select id="orderListDetail" parameterType ="order" resultType="order">
+
+	SELECT wp.payment_num, wp.payment_date, wp.project_num, wp.delivery_yn, wp.user_num, wpj.title, wp.delivery_charge, wp.pay_amount, r.reward_name
+	FROM w_payment wp
+	INNER JOIN w_project wpj ON wp.user_num = wpj.user_num
+	LEFT JOIN w_reward r ON wp.project_num = r.project_num
+	WHERE wp.user_num = 'U2023091911554916'
+	ORDER BY wp.payment_num DESC
+	
+	</select>
+
+</mapper>

@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.soolwhale.client.payment.dao.PaymentDao">
+		<resultMap type="payment" id="paymentResultMap">
+    <id column="payment_num" property="paymentNum"/>
+    <result property="rownum" column="rownum"/>
+    <result column="use_point" property="usePoint"/>
+    <result column="delivery_charge" property="deliveryCharge"/>
+    <result column="payment_date" property="paymentDate"/>
+    <result column= "addr_num" property="addrNum"/>
+    <result column="user_num" property="userNum"/>
+    <result column="delivery_YN" property="deliveryYN"/>  
+    <result column="pay_amount" property="payAmount"/>  
+    <result column="project_num" property="projectNum"/>  
+    <result column="payment_method" property="paymentMethod"/>  
+    <result column="add_point" property="addPoint"/>
+    <result column="reward" property="singleReward" jdbcType="VARCHAR" />
+    <result column="payment_count" property="paymentCount"/>
+    <result column="total_amount" property="totalAmount"/>
+    <result column="billing_key" property="billingKey"/>
+    <result column="merchant_uid" property="merchantUid"/>
+    <result column="status" property="status"/>
+    <result column="execute_timestamp" property="executeTimestamp"/>
+    <association property="project">
+    	<result column="project_num" property="projectNum" />
+    	<result column="title" property="title" />
+    	<result column="end_date" property="endDate"	/>
+    	<result column="sts" property="sts"/>
+    </association>
+    <association property="user">
+    	<result column="user_num" property="userNum" />
+    	<result column="name" property="name"	/>
+    	<result column="phone_number"  property="phoneNumber" />
+     </association>
+      <association property="rewardr">
+    	<result column="reward" property="reward" />
+    	<result column="project_num" property="projectNum"	/>
+    	<result column="reward_name" property="rewardName"	/>
+    	<result column="reward_desc" property="rewardDesc"	/>
+    	<result column="reward_charge" property="rewardCharge"	/>
+    	<result column="amount" property="amount"/>
+    </association>
+      <association property="address">
+    	<result column="addr_num" property="addrNum" />
+    	<result column="zipcode" property="zipcode"	/>
+    	<result column="addr" property="addr"	/>
+    	<result column="addr_detail" property="addrDetail"	/>
+    	<result column="req" property="req"	/>
+    	<result column="recipient" property="recipient"/>
+    	<result column="tel" property="tel"/>
+    	<result column="user_num" property="userNum"/>
+    </association>
+     
+</resultMap>
+
+
+	
+		<resultMap type="payment" id="paymentCompleteResultMap">
+    <result column="payment_count" property="paymentCount"/>
+     <association property="project">
+    	<result column="project_num" property="projectNum" />
+    	<result column="title" property="title" />
+    	<result column="end_date" property="endDate"	/>
+    	<result column="sts" property="sts"/>
+
+    </association>
+</resultMap>
+<resultMap type="payment" id="paymentAmountResultMap">
+		<result column="project_num" property="projectNum" />
+		<result column="pay_amount" property="payAmount" />
+		
+	</resultMap>
+
+	<insert id="paymentInsert">
+		<selectKey keyProperty="paymentNum" resultType="String"
+			order="BEFORE">
+			select 'PAY' || TO_CHAR(SYSDATE, 'YYYYMMDDHH24MISS') ||
+			Pay_SEQ.NEXTVAL
+			from dual
+		</selectKey>
+
+		INSERT INTO w_payment(payment_num, use_point, delivery_charge,
+		payment_date, addr_num, user_num, delivery_YN, pay_amount, reward,
+		project_num, payment_method, add_point,billing_key,merchant_uid,
+		additional_donation, execute_timestamp)
+		values(#{paymentNum}, #{usePoint},
+		#{deliveryCharge}, sysdate, (select max(addr_num) from
+		w_address where
+		user_num=#{userNum}),#{userNum}, 'ORD_01',
+		#{payAmount},
+		#{singleReward, jdbcType=VARCHAR}, #{projectNum,
+		jdbcType=VARCHAR},
+		'카드', #{addPoint},#{billingKey},#{merchantUid},
+		#{additionalDonation}, #{executeTimestamp})
+	</insert>
+
+
+<select id="paymentDate">
+SELECT DISTINCT EXECUTE_TIMESTAMP from w_payment WHERE MERCHANT_UID=#{MERCHANTUID}
+</select>
+
+
+<select id="paymentComplete" resultMap="paymentCompleteResultMap">
+SELECT 
+    pr.project_num,
+    pr.end_date,
+    pr.title,
+    COUNT(DISTINCT p.user_num) AS payment_count
+FROM 
+    w_project pr
+JOIN 
+    w_payment p ON pr.project_num = p.project_num
+where pr.project_num=#{projectNum}
+GROUP BY 
+    pr.project_num,pr.end_date, pr.title
+
+</select>
+
+	<select id="projectDetailCount" parameterType="project"
+		resultType="payment" resultMap="paymentResultMap">
+		SELECT COUNT(DISTINCT user_num) as
+		payment_count,
+		NVL(SUM(TO_NUMBER(use_point) + TO_NUMBER(pay_amount)),0)
+		AS
+		total_amount from w_payment where project_num=#{projectNum}
+	</select>
+
+	<update id="paymentUpdate" parameterType="String">
+
+		update w_payment set
+		merchant_uid = #{merchantUid},
+		status='processed' where
+		billing_key=#{billingKey}
+	</update>
+
+	<delete id="paymentDelete" parameterType="payment">
+		DELETE FROM w_payment
+		WHERE payment_num=#{paymentNum}
+	</delete>
+
+
+	<delete id="paymentDeleteByCancel" parameterType="String">
+		delete from
+		w_payment where merchant_uid=#{merchantUid}
+	</delete>
+
+ <select id="paymentList" parameterType="payment" resultMap="paymentResultMap">
+   SELECT distinct pay.merchant_uid,
+       	pay.project_num AS project_num,
+       	proj.title AS title,
+       	pay.payment_date AS payment_date,
+       	pay.billing_key,
+       	proj.sts as sts,
+       	pay.user_num AS user_num,
+        pay.delivery_YN
+		FROM w_payment pay
+		JOIN w_project proj ON pay.project_num = proj.project_num
+    	WHERE
+        pay.user_num = #{userNum, jdbcType=VARCHAR}
+		order by payment_date desc
+</select> 
+
+
+		<select id="paymentListDetail" parameterType="payment" resultMap="paymentResultMap">
+    SELECT
+    wp.payment_num,
+    wp.use_point,
+    wp.delivery_charge,
+    wp.payment_date,
+    wa.addr,
+    wa.zipcode,
+    wa.addr_detail,
+    wa.recipient,
+    wa.tel,
+    wr.reward_name,
+    wr.reward_desc,
+    wr.amount,
+    wpr.title,
+    wpr.liquor_type,
+    wpr.maker_name,
+    wpr.maker_desc,
+    wpr.first_img_filename,
+    wpr.first_video,
+    wp.merchant_uid,
+    wp.user_num
+FROM w_payment wp
+JOIN w_address wa ON wp.addr_num = wa.addr_num
+JOIN w_reward wr ON wp.reward = wr.reward
+JOIN w_project wpr ON wp.project_num = wpr.project_num
+JOIN  w_user wu on wu.user_num = wp.user_num
+WHERE wp.user_num = #{user.userNum, jdbcType=VARCHAR}
+AND wp.merchant_uid = #{merchantUid, jdbcType=VARCHAR}
+	</select>
+
+
+<select id="paymentListDetailChoice"  resultMap="paymentResultMap">
+    SELECT
+    wp.payment_num,
+    wp.use_point,
+    wp.delivery_charge,
+    wp.payment_date,
+    wa.addr,
+    wa.zipcode,
+    wa.addr_detail,
+    wa.recipient,
+    wa.tel,
+    wr.reward_name,
+    wr.reward_desc,
+    wr.amount,
+    wpr.title,
+    wpr.liquor_type,
+    wpr.maker_name,
+    wpr.maker_desc,
+    wpr.first_img_filename,
+    wpr.first_video,
+    wp.merchant_uid,
+    wp.user_num,
+    wu.name,
+    wu.phone_number
+FROM w_payment wp
+JOIN w_address wa ON wp.addr_num = wa.addr_num
+JOIN w_reward wr ON wp.reward = wr.reward
+JOIN w_project wpr ON wp.project_num = wpr.project_num
+JOIN  w_user wu on wu.user_num = wp.user_num
+WHERE wp.user_num = #{user.userNum, jdbcType=VARCHAR}
+AND wp.merchant_uid = #{merchantUid, jdbcType=VARCHAR}
+	</select> 
+
+	<select id="amountList" resultMap="paymentResultMap">
+		select project_Num,
+		sum(pay_amount) as pay_amount from w_payment
+		group by project_num
+	</select>
+
+	<select id="merchantSelect" parameterType="payment"
+		resultMap="paymentResultMap">
+		SELECT distinct merchant_uid FROM w_payment where user_num =
+		#{userNum
+		,jdbcType=VARCHAR}
+	</select>
+
+</mapper>

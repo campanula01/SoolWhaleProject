@@ -1,0 +1,23 @@
+package com.soolwhale.admin.manager.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttributes;
+
+import com.soolwhale.admin.manager.service.ManagerService;
+
+import lombok.Setter;
+import lombok.extern.slf4j.Slf4j;
+
+@Controller
+@SessionAttributes("adminLogin")
+@RequestMapping("/manager/*")
+@Slf4j
+public class ManagerController {
+
+	@Setter(onMethod_= @Autowired)
+	private ManagerService adminUserService;
+	
+	
+}

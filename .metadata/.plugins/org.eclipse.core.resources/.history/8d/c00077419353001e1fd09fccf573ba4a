@@ -1,0 +1,187 @@
+package com.soolwhale.client.payment.controller;
+
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
+import java.util.List;
+
+import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import com.soolwhale.client.address.service.AddressService;
+import com.soolwhale.client.address.vo.AddressVO;
+import com.soolwhale.client.payment.dto.PaymentDto;
+import com.soolwhale.client.payment.service.PaymentService;
+import com.soolwhale.client.payment.vo.PaymentVO;
+import com.soolwhale.client.point.service.PointService;
+import com.soolwhale.client.point.vo.PointVO;
+import com.soolwhale.client.project.service.ProjectService;
+import com.soolwhale.client.project.vo.ProjectVO;
+
+import lombok.Setter;
+import lombok.extern.slf4j.Slf4j;
+
+//RestController는 값만 가져오므로 여기에 사용하면 안된다.
+@Controller
+@RequestMapping("/payment/*")
+@Slf4j
+public class PaymentController {
+
+	@Setter(onMethod_ = @Autowired)
+	private AddressService addressService;
+	// fundingReward에서 불러와야하는 데이터
+	// 프로젝트 이름, 리워드 이름, 리워드 가격, 리워드 설명,
+	
+	@Setter(onMethod_=@Autowired)
+	private PaymentService paymentService;
+	
+	@Setter(onMethod_=@Autowired)
+	private PointService pointService;
+	
+	@Setter(onMethod_=@Autowired)
+	private ProjectService projectService;
+	
+
+
+	@GetMapping("/fundingPayment")
+	public String fundingPayment(Model model, AddressVO vo, HttpSession session) {
+		 List<AddressVO> addressList = addressService.addressList(vo);
+		    model.addAttribute("addressList", addressList);
+		 
+		    List<PaymentDto> selectedProducts = (List<PaymentDto>) session.getAttribute("selectedProducts");
+		    if (selectedProducts != null && !selectedProducts.isEmpty()) {
+		        System.out.println("selectedProducts exists in the session!");
+		        model.addAttribute("selectedProducts", selectedProducts);
+		    } else {
+		        System.out.println("selectedProducts does NOT exist in the session!");
+		    }
+
+		log.info("fundingPayment 페이지 불러오기");
+		return "client/funding/fundingPayment";
+	}
+
+	@PostMapping("/rewardArray")
+	public ResponseEntity<String> rewardArray(@RequestBody List<PaymentDto> products, Model model, HttpSession session) {
+	    System.out.println(products.size()); // 여기서 몇 개의 아이템이 들어왔는지 확인
+	    // 세션에 상품 목록 추가
+	    session.setAttribute("selectedProducts", products);
+	    products.forEach(product -> System.out.println(product.getName())); // 각 상품의 이름 출력
+	    return ResponseEntity.ok("Success");
+	}
+
+
+	
+	@PostMapping("/paymentInsert")
+	public ResponseEntity<String> paymentInsert(@RequestBody PaymentVO pvo) {
+		 log.info("Received PaymentVO: " + pvo); // PaymentVO 객체의 toString() 메서드를 오버라이드해야 합니다.
+	    try {
+	    	log.info("insert");
+	        int result = paymentService.paymentInsert(pvo);
+	        
+
+	        if(result == pvo.getReward().size()) {
+	            return ResponseEntity.ok("Inserted successfully!");
+	        } else {
+	            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Insert failed for some rewards.");
+	        }
+
+	    } catch(Exception e) {
+	    	  log.error("ERROR: ", e);  // 오류의 스택 트레이스를 로그로 출력
+	          return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("ERROR: " + e.getMessage());
+	    }
+	}
+	
+	@PostMapping("/pointInsert")
+	public ResponseEntity<?> pointInsert(@RequestBody PointVO vo) {
+	    log.info("pointInsert");
+	    log.info("PointVO: "+vo);
+	    int result = pointService.pointInsert(vo);
+	    if(result == 1) {
+	        log.info("point가 insert되었습니다.");
+	        return ResponseEntity.ok().body("success");
+	    } else {
+	        log.info("point insert에 실패했습니다.");
+	        return ResponseEntity.badRequest().body("failure");
+	    }
+	}
+
+
+	@PostMapping("/fundingPayComplete")
+	public ResponseEntity<String> fundingPayComplete(@ModelAttribute PaymentVO pvo, Model model, HttpSession session) {
+		//Response 반환값 변경: 서버에서 AJAX 요청에 대한 응답을 리디렉션할 URL 문자열로 반환합니다. 그런 다음 클라이언트에서 해당 URL로 리디렉션을 수행합니다.
+		PaymentVO paymentComplete = paymentService.paymentComplete(pvo);
+		model.addAttribute("paymentComplete",paymentComplete);
+		log.info("paymentComplete"+paymentComplete);
+		
+		session.setAttribute("paymentComplete", paymentComplete);
+		log.info("fundingPayComplete 페이지 불러오기, 데이터 삽입");
+		return ResponseEntity.ok("Success");
+	}
+	
+	
+	
+	
+	
+	@GetMapping("/fundingPayComplete")
+	public String fundingPayCompletePage(PaymentVO pvo, ProjectVO vo,HttpSession session, Model model) {
+		
+		List<ProjectVO> recommendRewardList = projectService.recommendRewardList();
+		model.addAttribute("recommendRewardList", recommendRewardList);
+		
+		log.info("recommendRewardList"+recommendRewardList);
+
+		PaymentVO paymentComplete = (PaymentVO) session.getAttribute("paymentComplete");
+		model.addAttribute("paymentComplete",paymentComplete);
+		
+		
+		
+		
+		
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+		LocalDateTime endDate = LocalDateTime.parse(paymentComplete.getProject().getEndDate(), formatter);
+		
+		LocalDateTime dueDateLDT = endDate.plusDays(1);
+		LocalDateTime dueDeliveryDateLDT = dueDateLDT.plusMonths(1);
+		LocalDateTime maxDelayDateLDT = dueDeliveryDateLDT.plusMonths(2);
+		
+		Date dueDate = convertDate(dueDateLDT);
+		Date dueDeliveryDate = convertDate(dueDeliveryDateLDT);
+		Date maxDelayDate = convertDate(maxDelayDateLDT);
+		
+		int dayOfMonthDueDelivery = getDayOfMonth(dueDeliveryDate);
+		
+		model.addAttribute("dueDate", dueDate);
+		model.addAttribute("dueDeliveryDate", dueDeliveryDate);
+		model.addAttribute("maxDelayDate", maxDelayDate);
+		model.addAttribute("dayOfMonth", dayOfMonthDueDelivery);  // 뷰에 dayOfMonth 값을 전달합니다.
+		
+	   
+		
+		return "/client/funding/fundingPayComplete";
+	}
+	
+	public Date convertDate(LocalDateTime localDateTime) {
+	    return Date.from(localDateTime.atZone(ZoneId.systemDefault()).toInstant());
+	}
+
+	public int getDayOfMonth(Date date) {
+	    java.util.Calendar cal = java.util.Calendar.getInstance();
+	    cal.setTime(date);
+	    return cal.get(java.util.Calendar.DAY_OF_MONTH);
+	}
+	
+}

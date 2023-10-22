@@ -1,0 +1,111 @@
+*{
+  text-decoration: none;
+  list-style: none;
+  margin:0;
+  box-sizing: border-box;
+  padding: 0;
+}
+
+#wrap{
+  padding: 0 40px;
+}
+.wrap_center{
+  max-width:1141px;
+  width:100%;
+  margin:0 auto;
+  display: flex;
+  flex-wrap: nowrap;
+  gap:1em;
+  padding:0 20px;
+  /*border: 1px solid #888;*/
+}
+
+
+.main_section{
+  flex-basis: 1000px;
+  flex-grow: 1;
+  flex-shrink: 1;
+  /* background-color: #ffe0e0; */
+}
+
+
+/*        aside 부분       */
+
+#wrap_aside{
+    flex-basis: 200px;
+    flex-grow:0;
+    flex-shrink: 0;
+    /* background-color: #f0f0ff; */
+    padding-top: 80px;
+    margin:0 auto;
+}
+
+.user_img{
+    width: 130px;
+    height: 130px;
+    border:3px solid #888;
+    background-image: url("/resources/img/common/user_img.png");
+    background-repeat: no-repeat;
+    background-size: 110px;
+    background-position: 10px;
+    border-radius: 100%;
+    margin:0 auto;
+}
+
+.user_id{
+    margin: 10px auto;
+    text-align: center;
+}
+
+.question{
+    margin-top:30px;
+    font-size: 17px;
+    padding-left:10px;
+}
+
+.question a{
+  color: rgb(13,13,13);
+}
+.question a:hover{
+  color:#96dcf0;
+}
+
+.li_style{
+    margin-top:15px;
+    font-size: 17px;
+    width: auto;
+    height: 30px;
+    line-height: 30px;
+    padding: 0;
+}
+
+.li_style a{
+  color: rgb(13,13,13);
+  padding-left:10px;
+}
+.li_style a:hover{
+  color: #96dcf0;
+
+}
+
+.smp{
+    font-size: 18px;
+    width: 170px;
+    border-bottom: 1px solid rgb(224,224,224);
+    margin-top:20px;
+    height: 35px;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+
+
+
+@media screen and (max-width: 768px) {
+    /* 화면 너비가 768px 이하인 경우에만 적용되는 스타일 */
+
+
+    #wrap_aside{
+        display: none;
+    }
+}

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.soolwhale.client.image.dao.ImageDao">
+	
+	<resultMap type="image" id="image">
+    	<result column="detail_img_num" property="detailImgNum"/>
+    	<result column="project_num" property="projectNum"/>
+    	<result column="registration_date" property="registrationDate"/>
+    	<result column="img_filename" property="imgFilename"/>
+	</resultMap>
+	
+	<select id="imageList" resultMap="image">
+		select detail_img_num, project_num, registration_date, img_filename from w_detail_img
+		WHERE detail_img_num = #{detailImgNum}
+	</select>
+	
+	<insert id="multipleImageInsert">
+		<foreach collection="images" item="item" index="index" open="insert all" separator=" " close="select * from dual ">
+			INTO w_detail_img(detail_img_num, project_num, registration_date, img_filename)
+			VALUES(get_image_number(), #{item.projectNum}, default, #{item.imgFilename})
+		</foreach>
+	</insert>
+	
+	
+	
+	<select id="imgListProject" resultMap="image">
+		select detail_img_num, registration_date,img_filename from w_detail_img where project_num = #{projectNum}
+	</select>
+	
+	<delete id="imageDelete" parameterType="image">
+    	DELETE FROM w_detail_img WHERE project_num = #{projectNum}
+	</delete>
+	
+	<select id="imageListByProjectNum" parameterType="image" resultMap="image">
+		select project_num, img_filename from w_detail_img
+		WHERE project_num = #{projectNum}
+	</select>
+	
+	<delete id="imageDeleteById" parameterType="image">
+		Delete FROM w_detail_img WHERE img_filename = #{imgFilename}
+	</delete>
+</mapper>

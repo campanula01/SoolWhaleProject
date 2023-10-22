@@ -1,0 +1,86 @@
+
+
+.my_btn_list{
+    margin-top:100px;
+    margin-bottom: 35px;
+}
+
+.que_box{
+    display: inline-block;
+    width: 105px;
+    height: 35px;
+    line-height: 35px;
+   
+    text-align: center;
+    font-size: 15px;
+    margin-right:10px;
+}
+
+.que_box a{
+    display: inline-block;
+    width: 100%;
+}
+
+.my_que{
+    background-color: #96dcf0;
+}
+.try_que{
+    background-color: #ddd;
+}
+
+.que_text{
+    font-size: 30px;
+    font-weight: 600;
+}
+
+.que_back{
+    margin-top:20px;
+    width: 100%;
+    height: 100%;
+   
+}
+
+
+.list_table{
+     width: 100%;
+    color: #333;
+  }
+  
+
+table, th, td{
+    border:1px solid #888;
+     border-left: none;
+	  border-right:none;
+  
+}
+
+thead{
+    height:55px;
+    line-height: 55px;
+    font-size: 16px;
+    background-color: #96dcf0;
+}
+td{
+    height:50px;
+    line-height: 50px;
+    padding-left:15px;
+
+}
+.table_td1{
+    text-align: center;
+    padding:0;
+    width: 12%;
+}
+.table_td2{
+    text-align: center;
+    padding:0;
+    width: 15%;
+}
+
+.table_td4{
+    text-align: center;
+    padding:0;
+    width:15%;
+}
+
+

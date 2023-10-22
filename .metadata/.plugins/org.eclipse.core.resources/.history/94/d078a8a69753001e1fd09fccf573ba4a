@@ -1,0 +1,45 @@
+package com.soolwhale.client.payment.controller;
+
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
+import java.util.List;
+
+import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import com.soolwhale.client.address.service.AddressService;
+import com.soolwhale.client.address.vo.AddressVO;
+import com.soolwhale.client.payment.dto.PaymentDto;
+import com.soolwhale.client.payment.service.PaymentService;
+import com.soolwhale.client.payment.vo.PaymentVO;
+import com.soolwhale.client.point.service.PointService;
+import com.soolwhale.client.point.vo.PointVO;
+import com.soolwhale.client.project.service.ProjectService;
+import com.soolwhale.client.project.vo.ProjectVO;
+
+import lombok.Setter;
+import lombok.extern.slf4j.Slf4j;
+
+//RestController는 값만 가져오므로 여기에 사용하면 안된다.
+@Controller
+@RequestMapping("/payment/*")
+@Slf4j
+public class PaymentController {
+
+	
+}

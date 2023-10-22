@@ -1,0 +1,114 @@
+#open_modal_button {
+    margin-top: 50px;
+    margin-left: 30%;
+  }
+
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.651);
+    z-index: 9999;
+    opacity: 0;
+  }
+  
+ .modal_content {
+    position: relative;
+    margin: 8% auto;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    width: 450px;
+    padding-top: 20px;
+  
+  }
+  
+ .close_button {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    top: 10px;
+    right: 10px;
+    font-size: 30px;
+    cursor: pointer;
+  }
+  
+ .modal.active {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 1;
+    transition: all 0.5s;
+  }
+  
+ .modal.active .modal_content {
+    opacity: 1;
+    transform: translateY(0);
+    transform: translateY(-50px);
+    transition: all 0.5s;
+  }
+  
+.price_details {
+    display: none;
+    padding: 20px;
+    background-color: #96dcf05e;
+    border-radius: 10px;
+    margin-top: 20px;
+    width: 50%;
+    color: black;
+    margin-bottom: 20px;
+  }
+  
+.sum_price,
+ .close_button_content1 {
+    float: right;
+    margin-bottom: 30px;
+  }
+  
+#open_modal_button{
+    width: 300px;
+    height: 50px;
+    border: none;
+    background-color: #00b7d4;
+    color: white;
+    border-radius: 10px;
+    font-size: 20px;
+  }
+
+ .toggle_content {
+    display: none;
+    width: 390px;
+    max-height: 100px;
+    overflow-y: auto;
+    border: 1px solid #ffffff;
+    overflow: auto;
+  }
+  
+ .toggle_button {
+    margin-top: 20px;
+    cursor: pointer;
+    background-color: #00b8d4c2;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-align: center;
+  }
+  
+ .toggle_content::-webkit-scrollbar {
+    display: none;
+  }
+.toggle_content p {
+    background-color: #f9f9f9;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #96dcf05e;
+  }
+  
+  
+  
+  

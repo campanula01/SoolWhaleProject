@@ -1,0 +1,261 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ include file="/WEB-INF/views/client/common/header.jsp"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Main</title>
+    <script src="https://kit.fontawesome.com/312ff11b0d.js" crossorigin="anonymous"></script>
+   	<script src="/resources/js/common/jquery-3.7.0.min.js"></script>
+   	 <script src="/resources/js/main.js"></script>
+ 	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+ 	
+	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>   
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
+    <link rel="stylesheet" href="/resources/css/main.css"> 
+  <link rel="stylesheet" href="/resources/css/common/common.css">
+
+    
+</head>
+<body>
+    <div id="wrap">
+        <div data-include1="header" id="header"></div><!--헤더 인클루드-->
+        <div class="banner">
+            <div><img src="/resources/img/common/banner.jpg" alt=""></div>
+            <div><img src="/resources/img/common/banner2.jpg" alt=""></div>
+            <div><img src="/resources/img/common/banner3.jpg" alt=""></div>
+            <div><img src="/resources/img/common/banner.jpg" alt=""></div>
+            <div><img src="/resources/img/common/banner2.jpg" alt=""></div>
+            <div><img src="/resources/img/common/banner3.jpg" alt=""></div>
+            <div><img src="/resources/img/common/banner.jpg" alt=""></div>
+            <div><img src="/resources/img/common/banner2.jpg" alt=""></div>
+            <div><img src="/resources/img/common/banner3.jpg" alt=""></div>        
+        </div>
+        
+        
+        <div id="boarder"></div>
+        <div id="wrap_main">
+          
+            <main class="wrap_center_main">
+                <div class="wrap_center">
+                <a href="/project/fundingList"><p class="sinsin">인기순</p></a>
+                <div class="slider">
+                    <div class="slider_div">
+                        <div class="likeempty">
+                            <i class="fa-regular fa-heart"></i>
+                            <i class="fa-solid fa-heart"></i>
+                        </div>
+                        <a href="/project/fundingDetailview">
+                        <img src="/resources/img/common/sample_6.jpg" alt="">
+                        <div class="product-title">고도리 체리 와인</div>
+                        <div class="product-price">25,000원</div></a>
+                        <div class="hr"></div>
+                        <ul class="product-tage">              
+                            <li>#전통주 소물리에PICK</li>
+                         
+                        </ul>
+                    </div>
+                    <div class="slider_div">
+                        <div class="likeempty">
+                            <i class="fa-regular fa-heart"></i>
+                            <i class="fa-solid fa-heart"></i>
+                        </div><a href="/project/fundingDetailview">
+                        <img src="/resources/img/common/sample_6.jpg" alt="">
+                        <div class="product-title">고도리 체리 와인</div>
+                        <div class="product-price">25,000원</div></a>
+                        <div class="hr"></div>
+                        <ul class="product-tage">
+                            <li>#전통주 소물리에PICK</li>
+       
+                        </ul>
+                    </div>
+                    
+                    <div class="slider_div">
+                        <div class="likeempty">
+                            <i class="fa-regular fa-heart"></i>
+                            <i class="fa-solid fa-heart"></i>
+                        </div><a href="/project/fundingDetailview">
+                        <img src="/resources/img/common/sample_3.jpg" alt="">
+                        <div class="product-title">고도리 체리 와인</div>
+                        <div class="product-price">25,000원</div></a>
+                        <div class="hr"></div>
+                        <ul class="product-tage">
+                            <li>#전통주 소물리에PICK</li>
+           
+                        </ul>
+                    </div>
+                    <div class="slider_div">
+                        <div class="likeempty">
+                            <i class="fa-regular fa-heart"></i>
+                            <i class="fa-solid fa-heart"></i>
+                        </div><a href="/project/fundingDetailview">
+                        <img src="/resources/img/common/sample_5.jpg" alt="">
+                        <div class="product-title">고도리 체리 와인</div>
+                        <div class="product-price">25,000원</div></a>
+                        <div class="hr"></div>
+                        <ul class="product-tage">
+                            <li>#전통주 소물리에PICK</li>
+                 
+                        </ul>
+                    </div>      <div class="slider_div">
+                        <div class="likeempty">
+                            <i class="fa-regular fa-heart"></i>
+                            <i class="fa-solid fa-heart"></i>
+                        </div><a href="/project/fundingDetailview">
+                        <img src="/resources/img/common/sample_3.jpg" alt="">
+                        <div class="product-title">고도리 체리 와인</div>
+                        <div class="product-price">25,000원</div></a>
+                        <div class="hr"></div>
+                        <ul class="product-tage">
+                            <li>#전통주 소물리에PICK</li>
+                    
+                        </ul>
+                    </div>      <div class="slider_div">
+                        <div class="likeempty">
+                            <i class="fa-regular fa-heart"></i>
+                            <i class="fa-solid fa-heart"></i>
+                        </div><a href="/project/fundingDetailview">
+                        <img src="/resources/img/common/sample_5.jpg" alt="">
+                        <div class="product-title">고도리 체리 와인</div>
+                        <div class="product-price">25,000원</div></a>
+                        <div class="hr"></div>
+                        <ul class="product-tage">
+                            <li>#전통주 소물리에PICK</li>
+                
+                        </ul>
+                    </div>
+                    <div class="slider_div">
+                        <div class="likeempty">
+                            <i class="fa-regular fa-heart"></i>
+                            <i class="fa-solid fa-heart"></i>
+                        </div><a href="/project/fundingDetailview">
+                        <img src="/resources/img/common/sample_4.jpg" alt="">
+                        <div class="product-title">고도리 체리 와인</div>
+                        <div class="product-price">25,000원</div></a>
+                        <div class="hr"></div>
+                        <ul class="product-tage">
+                            <li>#전통주 소물리에PICK</li>
+            
+                        </ul>
+                    </div>
+                </div>
+             
+                <div class="slider">
+                    <div class="slider_div">
+                        <div class="likeempty">
+                            <i class="fa-regular fa-heart"></i>
+                            <i class="fa-solid fa-heart"></i>
+                        </div><a href="/project/fundingDetailview">
+                        <img src="/resources/img/common/sample_5.jpg" alt="">
+                        <div class="product-title">고도리 체리 와인</div>
+                        <div class="product-price">25,000원</div></a>
+                        <div class="hr"></div>
+                        <ul class="product-tage">
+                            <li>#전통주 소물리에PICK</li>
+                  
+                        </ul>
+                    </div>
+                    <div class="slider_div">
+                        <div class="likeempty">
+                            <i class="fa-regular fa-heart"></i>
+                            <i class="fa-solid fa-heart"></i>
+                        </div><a href="/project/fundingDetailview">
+                        <img src="/resources/img/common/sample_2.jpg" alt="">
+                        <div class="product-title">고도리 체리 와인</div>
+                        <div class="product-price">25,000원</div></a>
+                        <div class="hr"></div>
+                        <ul class="product-tage">
+                            <li>#전통주 소물리에PICK</li>
+                        
+                        </ul>
+                    </div>      <div class="slider_div">
+                        <div class="likeempty">
+                            <i class="fa-regular fa-heart"></i>
+                            <i class="fa-solid fa-heart"></i>
+                        </div><a href="/project/fundingDetailview">
+                        <img src="/resources/img/common/sample_5.jpg" alt="">
+                        <div class="product-title">고도리 체리 와인</div>
+                        <div class="product-price">25,000원</div></a>
+                        <div class="hr"></div>
+                        <ul class="product-tage">
+                            <li>#전통주 소물리에PICK</li>
+                  
+                        </ul>
+                    </div>      <div class="slider_div">
+                        <div class="likeempty">
+                            <i class="fa-regular fa-heart"></i>
+                            <i class="fa-solid fa-heart"></i>
+                        </div><a href="/project/fundingDetailview">
+                        <img src="/resources/img/common/sample_4.jpg" alt="">
+                        <div class="product-title">고도리 체리 와인</div>
+                        <div class="product-price">25,000원</div></a>
+                        <div class="hr"></div>
+                        <ul class="product-tage">
+                            <li>#전통주 소물리에PICK</li>
+                 
+                        </ul>
+                    </div>      <div class="slider_div">
+                        <div class="likeempty">
+                            <i class="fa-regular fa-heart"></i>
+                            <i class="fa-solid fa-heart"></i>
+                        </div><a href="/project/fundingDetailview">
+                        <img src="/resources/img/common/sample_3.jpg" alt="">
+                        <div class="product-title">고도리 체리 와인</div>
+                        <div class="product-price">25,000원</div></a>
+                        <div class="hr"></div>
+                        <ul class="product-tage">
+                            <li>#전통주 소물리에PICK</li>
+                    
+                        </ul>
+                    </div>      <div class="slider_div">
+                        <div class="likeempty">
+                            <i class="fa-regular fa-heart"></i>
+                            <i class="fa-solid fa-heart"></i>
+                        </div><a href="/project/fundingDetailview">
+                        <img src="/resources/img/common/sample_2.jpg" alt="">
+                        <div class="product-title">고도리 체리 와인</div>
+                        <div class="product-price">25,000원</div></a>
+                        <div class="hr"></div>
+                        <ul class="product-tage">
+                            <li>#전통주 소물리에PICK</li>
+          
+                        </ul>
+                    </div>      <div class="slider_div">
+                        <div class="likeempty">
+                            <i class="fa-regular fa-heart"></i>
+                            <i class="fa-solid fa-heart"></i>
+                        </div><a href="/project/fundingDetailview">
+                        <img src="/resources/img/common/sample_6.jpg" alt="">
+                        <div class="product-title">고도리 체리 와인</div>
+                        <div class="product-price">25,000원</div></a>
+                        <div class="hr"></div>
+                        <ul class="product-tage">
+                            <li>#전통주 소물리에PICK</li>
+                   
+                        </ul>
+                    </div>      <div class="slider_div">
+                        <div class="likeempty">
+                            <i class="fa-regular fa-heart"></i>
+                            <i class="fa-solid fa-heart"></i>
+                        </div><a href="/project/fundingDetailview">
+                        <img src="/resources/img/common/sample_2.jpg" alt="">
+                        <div class="product-title">고도리 체리 와인</div>
+                        <div class="product-price">25,000원</div></a>
+                        <div class="hr"></div>
+                        <ul class="product-tage">
+                            <li>#전통주 소물리에PICK</li>
+                          
+                        </ul>
+                    </div>
+                </div>
+                </div>
+            </div>
+            </main>
+        </div>
+    </div>
+</body>
+</html>

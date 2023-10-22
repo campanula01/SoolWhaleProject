@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.soolwhale.client.project.dao.ProjectDao">
+
+	<resultMap type="project" id="projectResultMap">
+    	<result column="PROJECT_NUM" property="projectNum"/>
+    	<result column="TITLE" property="title"/>
+    	<result column="W_DESC" property="wDesc"/>
+    	<result column="FIRST_IMG_FILENAME" property="firstImgFilename"/>
+    	<result column="FIRST_IMG" property="firstImg"/>
+    	<result column="FIRST_VIDEO" property="firstVideo"/>
+    	<result column="TARGET_AMOUNT" property="targetAmount"/>
+    	<result column="START_DATE" property="startDate"/>
+    	<result column="END_DATE" property="endDate"/>
+    	<result column="STS" property="sts"/>
+    	<result column="USE_YN" property="useYN"/>
+    	<result column="CREATE_DATE" property="createDate"/>
+    	<result column="LIQUOR_TYPE" property="liquorType"/>
+    	<result column="P_MODIFY_DATE" property="pModifyDate"/>
+    	<result column="MAKER_NAME" property="makerName"/>
+    	<result column="MAKER_DESC" property="makerDesc"/>
+    	<result column="USER_NUM" property="userNum"/>
+    	<result column="PROFIL_IMG_FILENAME" property="profilImgFilename"/>
+    	<result column="PROFIL_IMG" property="profilImg"/>
+	</resultMap>
+	
+	<select id="projectList" parameterType="project" resultMap="projectResultMap">
+		select PROJECT_NUM, TITLE, W_DESC, FIRST_IMG_FILENAME, FIRST_IMG,
+				FIRST_VIDEO, TARGET_AMOUNT, START_DATE, END_DATE, STS, USE_YN,
+				CREATE_DATE, LIQUOR_TYPE, P_MODIFY_DATE, MAKER_NAME, MAKER_DESC,
+				PROFIL_IMG_FILENAME, PROFIL_IMG
+		from w_project
+	</select>
+	
+	<select id="recommendRewardList" parameterType="project" resultMap="projectResultMap">
+	SELECT project_num, first_img,FIRST_IMG_FILENAME, title from w_project order by project_num desc
+	</select>
+	
+	<select id="projectDetail" parameterType="project" resultType="project" resultMap="projectResultMap">
+	select * from w_project where project_num='1'
+	</select>
+</mapper>

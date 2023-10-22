@@ -1,0 +1,5 @@
+package com.soolwhale.client.user.service;
+
+public interface UserService {
+
+}

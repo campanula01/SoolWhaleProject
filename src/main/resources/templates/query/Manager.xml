@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.soolwhale.admin.manager.dao.ManagerDao">
+	<select id="ManagerLoginProcess" parameterType="manager" resultType="manager">
+		SELECT manager_num as managerNum, manager_id as managerId, manager_pwd as managerPwd 
+		FROM w_manager
+		WHERE 		
+		manager_id = #{managerId}
+		AND manager_pwd = #{managerPwd}
+	</select>
+
+</mapper>

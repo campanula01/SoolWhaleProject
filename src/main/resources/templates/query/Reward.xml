@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.soolwhale.client.reward.dao.RewardDao">
+
+<resultMap type="reward" id="rewardResultMap">
+	<id column="reward" property="reward"/>
+    <result column="project_num" property="projectNum"/>
+    <result column="reward_name" property="rewardName"/>
+    <result column="reward_desc" property="rewardDesc"/>
+    <result column="delivery_charge" property="deliveryCharge"/>
+    <!-- amount 열의 이름을 수정한 경우, 새로운 열 이름을 여기에 사용 -->
+    <result column="amount" property="amount"/>
+
+</resultMap>
+
+<!-- SQL 쿼리를 수정 -->
+<select id="rewardList" parameterType="reward" resultMap="rewardResultMap">
+    SELECT reward, project_num, reward_name, reward_desc,
+           delivery_charge, 
+           amount
+    FROM w_reward 
+    WHERE project_num = #{projectNum}
+</select>
+<insert id="rewardInsert" parameterType="reward">
+		insert into w_reward(reward, project_num, reward_name, reward_desc, delivery_charge, amount)
+		values((#{projectNum}||'_'||R_SEQ.nextval), #{projectNum}, #{rewardName}, #{rewardDesc}, #{deliveryCharge}, #{amount})
+	</insert>
+	
+	<select id="rewardDetail" parameterType="project" resultMap="rewardResultMap">
+		select * from w_reward where project_num=#{projectNum}
+	</select>
+
+	<delete id="rewardDelete" parameterType="reward">
+    	DELETE FROM w_reward WHERE project_num = #{projectNum}
+	</delete>
+	
+	<delete id="deleteRewardById" parameterType="String">
+		DELETE FROM w_reward WHERE reward = #{rewardId}
+	</delete>
+</mapper>

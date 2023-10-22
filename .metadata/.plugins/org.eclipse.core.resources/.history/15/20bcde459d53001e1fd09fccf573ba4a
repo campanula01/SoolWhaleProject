@@ -1,0 +1,5 @@
+package com.soolwhale.admin.manager.service;
+
+public interface ManagerService {
+
+}
