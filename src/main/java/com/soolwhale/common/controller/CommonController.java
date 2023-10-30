@@ -14,7 +14,7 @@ import com.soolwhale.client.project.vo.ProjectVO;
 import lombok.Setter;
 
 @Controller
-@SessionAttributes("common")
+@SessionAttributes("/common")
 public class CommonController {
 	@Setter(onMethod_ = @Autowired)
 	private ProjectService projectService;

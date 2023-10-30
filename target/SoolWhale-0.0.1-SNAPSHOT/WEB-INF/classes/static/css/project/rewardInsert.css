@@ -1,0 +1,186 @@
+
+body {
+    font-family: 'Spoqa Han Sans Neo', 'Spoqa Han Sans JP', 'Sans-serif';
+}
+
+
+#reward_view, #reward_list {
+    float: left;
+    margin-left: 100px;
+}
+
+
+.reward_insert_form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+p{
+    font-size: 13px;
+    color: rgb(133, 130, 130);
+}
+
+.project_info_page {
+    padding: 20px;
+}
+
+.maker_info_container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    border-top: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.wrap_reward_list{
+    width: 100%;
+    text-align: left;
+    max-width: 250px;
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: rgb(222, 243, 254);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.reward_name_guide,
+.reward_name_form,
+.reward_introduce_guide,
+.reward_introduce_form,
+.delivery_fee_guide,
+.delivery_fee_form,
+.reward_price_guide,
+.reward_price_form {
+    display: contents;
+    vertical-align: top;
+    margin: 0 10px;
+    width: 500px;
+}
+
+.reward_name,
+.reward_introduce,
+.delivery_fee,
+.reward_price {
+    text-align: center;
+    width: 500px;
+    margin: auto;
+}
+
+textarea {
+    width: 95%;
+    height: 140px;
+    margin-top: 5px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    max-width: 475px;
+    border-radius: 5px;
+    resize: none;
+    padding: 10px;
+}
+
+.reward_name_input,
+.reward_price_input{
+    width: 70%;
+    height: 50px;
+    margin-top: 5px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#reward_insert_form > div {
+    border-bottom: 1px dashed rgb(194, 194, 194);
+    border-bottom-width: 100%;
+    padding-bottom: 20px;
+    margin-bottom: 30px;
+}
+
+.go_page {
+    display: flex;
+    justify-content: space-between;
+    margin:60px 20px 20px 20px;
+}
+
+.go_page > button {
+    height: 35px;
+    padding: 0 20px;
+    font-size: 14px;
+    background-color: rgb(0, 159, 236);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.delete_reward_btn {
+    background-color: rgb(0, 159, 236);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.delete_reward_btn:hover {
+    background-color: rgb(0, 88, 176);
+}
+
+#reward_insert_btn{
+	margin-left: 63%;
+	background-color: rgb(0, 159, 236);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 20px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#reward_insert_btn:hover {
+    background-color: rgb(0, 88, 176);
+}
+
+.prev_page_btn {
+	background-color: white;
+	width: 60px;
+	height: 60px;
+}
+
+
+.info_title {
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.maker_info_status {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.reward_insert_btn {
+    background-color: #4d8bf7;
+    color: #fff;
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.maker_info_status button {
+    margin-right: 10px;
+}

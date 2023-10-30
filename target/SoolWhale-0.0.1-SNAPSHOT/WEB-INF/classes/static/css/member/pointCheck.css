@@ -1,0 +1,93 @@
+.user_id{
+    text-decoration: underline;
+}
+
+
+
+.my_btn_list{
+    margin-top:100px;
+    margin-bottom: 35px;
+}
+
+.info_box{
+    display: inline-block;
+    width: 100px;
+    height: 35px;
+    line-height: 35px;
+   
+    text-align: center;
+    font-size: 15px;
+    margin-right:10px;
+}
+
+.info_box a{
+    display: inline-block;
+    width: 100%;
+}
+
+.basic_info{
+    background-color: #ddd;
+   
+}
+.point_info{
+    background-color: #96dcf0;
+}
+
+.info_text{
+    font-size: 30px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.point_text{
+    font-size:18px;
+    font-weight: bold;
+}
+.point_sum{
+    font-size:23px;
+    padding-left: 10px;
+    color:#96dcf0;
+}
+
+
+.point_back{
+    margin-top:20px;
+    width: 100%;
+    height: 800px;
+   
+}
+
+
+table{
+	 color:#333;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table, th, td{
+	
+	border: 1px solid #888;
+	border-left: none;
+	border-right:none;
+	
+}
+
+th{
+	height:55px;
+	line-height: 55px;
+	font-size:16px;
+	 background-color: #96dcf0;
+}
+
+td{
+	height:50px;
+	line-height: 50px;
+	padding:15px;
+}
+
+
+
+
+
+
+

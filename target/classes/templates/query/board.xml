@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.soolwhale.client.board.dao.BoardDao">
+
+	<!-- sql 공통으로 쓰는 코드 -->
+	<sql id="boardSearch">
+		<if test="search=='bTitle'">
+            <![CDATA[b_title LIKE '%'|| #{keyword} ||'%' ]]>
+		</if>
+		<if test="search=='bContent'">
+            <![CDATA[b_content LIKE '%'|| #{keyword} ||'%' ]]>
+		</if>
+		<if test="search=='userNickname'">
+            <![CDATA[u.user_nickname LIKE '%'|| #{keyword} ||'%' ]]>
+		</if>
+	</sql>
+
+
+
+
+	<resultMap type="board" id="Board">
+		<id column="b_num" property="bNum" />
+		<result column="user_num" property="userNum" />
+		<result column="b_title" property="bTitle" />
+		<result column="b_content" property="bContent" />
+		<result column="b_date" property="bDate"
+			javaType="java.sql.Timestamp" />
+		<result column="readcnt" property="readcnt" />
+		<result column="rcnt" property="rcnt" />
+		<association property="user">
+			<id column="user_num" property="userNum" />
+			<result column="user_nickname" property="userNickname" />
+		</association>
+	</resultMap>
+
+
+	<select id="boardList" parameterType="board" resultMap="Board">
+		
+		
+        <![CDATA[  SELECT
+        			rnum,
+				    b_num ,
+				    user_num ,
+				    user_nickname ,
+				    b_title ,
+				     b_date ,
+				    readcnt,
+				    (select count(r_num) from reply where b_num = boardList.b_num) as rcnt
+				FROM (
+				    SELECT /*+ INDEX_DESC(board board_pk) */
+				        rownum as rnum, b.user_num, user_nickname, b_title, b_date, readcnt,b_num
+				    FROM  
+			
+				   board b JOIN w_user u ON b.user_num = u.user_num
+				    WHERE ]]>
+		<trim prefix="(" suffix=") AND" prefixOverrides="AND">
+			<include refid="boardSearch"></include>
+		</trim>
+				    
+				  <![CDATA[   rownum <= #{pageNum}* #{amount}
+				) boardlist
+				WHERE rnum > (#{pageNum}- 1) * #{amount}
+				ORDER BY b_date DESC
+				 ]]>
+
+	</select>
+
+
+
+
+	<!-- 게시글 상세 조회 -->
+	<select id="boardDetail" resultMap="Board">
+		select b.b_num,
+		b.user_num,
+		u.user_nickname,
+		b.b_title,
+		b.b_content,
+		b.b_date,
+		b.readcnt
+		FROM board b
+		JOIN w_user u ON b.user_num = u.user_num
+		WHERE b_num = #{bNum}
+	</select>
+
+	<!-- 게시글 작성 -->
+	<insert id="boardWrite" parameterType="board"
+		useGeneratedKeys="true" keyProperty="bNum">
+		<selectKey keyProperty="bNum" resultType="int"
+			order="BEFORE">
+			select BOARD_SEQ.NEXTVAL from dual
+		</selectKey>
+		INSERT INTO board (b_num, user_num, b_title, b_content, readcnt,
+		b_date)
+		VALUES (#{bNum}, #{userNum, jdbcType=VARCHAR},
+		#{bTitle},
+		#{bContent}, #{readcnt}, SYSDATE)
+	</insert>
+
+	<!-- 게시글 수정 -->
+	<update id="boardUpdate" parameterType="board">
+		UPDATE board
+		SET b_title =
+		#{bTitle}, b_content = #{bContent}
+		WHERE b_num = #{bNum}
+	</update>
+
+	<!-- 게시글 삭제 -->
+	<delete id="boardDelete" parameterType="board">
+		DELETE FROM board
+		WHERE
+		b_num = #{bNum}
+	</delete>
+
+	<update id="readCntUpdate" parameterType="board">
+		UPDATE board
+		SET
+		readcnt=readcnt+1
+		where b_num=#{bNum}
+	</update>
+
+	<!-- 전체 레코드 수 조회 -->
+	<select id="boardListCnt" parameterType="board" resultType="int">
+		SELECT count(*)
+		FROM board b
+		JOIN w_user u ON b.user_num = u.user_num
+		<trim prefix="where (" suffix=")">
+			<include refid="boardSearch"></include>
+		</trim>
+	</select>
+</mapper>

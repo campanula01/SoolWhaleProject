@@ -1,0 +1,111 @@
+
+.que_try{
+    margin-top:20px;
+    margin-bottom: 35px;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+
+.que_try_ul{
+    width: 80%;
+    font-size:16px;
+
+}
+
+.que_try_ul > li >label{
+    display: inline-block;
+    width: 150px;
+
+}
+
+.q_sub{
+    display: inline-block;
+    width: 70%;
+    height: 50px;
+    border: 1px solid #ddd;
+    margin-left: -2px;
+    padding-left: 8px;
+}
+.q_li{
+    height: 60px;
+    line-height: 60px;
+    border-bottom: 1px solid #ddd;
+    padding-left: 15px;
+}
+
+
+.q_text{
+    width: 70%;
+    height: 300px;
+    resize:none;
+    margin-top:25px;
+    border:1px solid #ddd;
+}
+
+.q_textarea_l{
+    height: 300px;
+    float: left;
+    line-height: 350px;
+   
+
+}
+.q_textarea{
+    height: 350px;
+    border-bottom: 1px solid #ddd;
+    padding-left: 15px;
+    
+}
+
+.li_file{
+    height: 90px;
+    padding-top:10px;
+    
+}
+.q_li_in{
+    font-size:16px;
+}
+
+.btn_hap{
+    width: 80%;
+    margin-top:30px;
+    text-align: center;
+    height: 100px;
+}
+#q_can_btn, #q_sub_btn, #q_delete_btn {
+    width: 100px;
+    height: 30px;
+    font-size: 16px;
+    background-color:#96dcf0;
+    margin-right:20px;
+}
+
+
+
+.my_btn_list{
+    margin-top:100px;
+    margin-bottom: 35px;
+}
+.que_box{
+    display: inline-block;
+    width: 105px;
+    height: 35px;
+    line-height: 35px;
+   
+    text-align: center;
+    font-size: 15px;
+    margin-right:10px;
+}
+
+.que_box a{
+    display: inline-block;
+    width: 100%;
+}
+
+.my_que{
+    background-color: #ddd;
+   
+}
+.try_que{
+    background-color: #96dcf0;
+}

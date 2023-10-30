@@ -45,13 +45,20 @@ public class PaymentServiceImpl implements PaymentService {
 	@Setter(onMethod_=@Autowired)
 	private CommonDao commonDao;
 
-
+/*
 	@Value("${iamport.api-key}")
 	private String IAMPORT_API_KEY;
 
 	@Value("${iamport.api-secret}")
 	private String IAMPORT_API_SECRET;	
+	*/
 	
+	@Value("${IAMPORT_API_KEY:}")
+	private String IAMPORT_API_KEY;
+
+	@Value("${IAMPORT_API_SECRET:}")
+	private String IAMPORT_API_SECRET;
+
 
 	@Transactional
     @Override
@@ -172,6 +179,7 @@ public class PaymentServiceImpl implements PaymentService {
 	public int paymentDeleteByCancel(String merchantUid) {
 		int result = 0;
 		result = paymentDao.paymentDeleteByCancel(merchantUid);
+
 		return result;
 	}
 
@@ -246,6 +254,8 @@ public class PaymentServiceImpl implements PaymentService {
 	    String url = "https://api.iamport.kr/subscribe/payments/again";
 	    
 	    HttpHeaders headers = new HttpHeaders();
+	    
+	    //API 요청을 보낼 때 인증을 제공
 	    headers.set("Authorization", generateIamportToken());  
 	    
 	    MultiValueMap<String, Object> body = new LinkedMultiValueMap<>();
@@ -266,7 +276,7 @@ public class PaymentServiceImpl implements PaymentService {
 	        
 	        System.out.println("try Updated merchant_uid: " + merchant_uid);	//찍힘
 	        
-	        // 응답 파싱
+	        // 응답 파싱 responseDto 사용
 	        ObjectMapper objectMapper = new ObjectMapper();
 	        ResponseDto ResponseDto = objectMapper.readValue(response.getBody(), ResponseDto.class);
 	        System.out.println("<=============================================>");

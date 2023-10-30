@@ -1,0 +1,498 @@
+.wrap_fundingPay .purchase_title {
+  background-color: black;
+  text-align: center;
+  color: white;
+  padding: 10px;
+}
+
+.wrap_fundingPay #purchase_wrap {
+  padding: 30px;
+  position: relative;
+  margin-bottom: 30px;
+}
+
+.wrap_fundingPay #purchase_step {
+  position: relative;
+}
+
+.wrap_fundingPay .container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 10vh;
+  left: 30%;
+}
+
+.wrap_fundingPay .circle_container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.wrap_fundingPay .circle {
+  width: 100px;
+  height: 100px;
+  background-color: #96dcf0;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin: 0 40px;
+  z-index: 1;
+}
+
+.wrap_fundingPay .circle_selected {
+  width: 100px;
+  height: 100px;
+  background-color: #96dcf0;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin: 0 40px;
+  z-index: 1;
+  background-color: #00b7d4;
+}
+
+.wrap_fundingPay .word {
+  color: white;
+  text-align: center;
+  margin-top: 5px;
+}
+
+.wrap_fundingPay .connector {
+  position: absolute;
+  width: 400px;
+  height: 1px;
+  top: calc(50% - 0.5px);
+  left: calc(50% - 200px);
+}
+
+.wrap_fundingPay .connector::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  border-top: 1px dashed #00b7d4;
+  background: none;
+  transform: translateY(-50%);
+}
+
+.wrap_fundingPay .content_reward, .wrap_fundingPay .total_price{
+	font-size: 15px;
+	font-weight: bold;
+}
+.wrap_fundingPay h4{
+  font-weight: bold;
+}
+
+.wrap_fundingPay input[type="checkbox"] {
+  /* 기본 체크박스 스타일 제거 */
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 17px;
+  height: 17px;
+  vertical-align: middle;
+  border: 1px solid #00b7d4; /* 테두리 추가 */
+  background-color: white; /* 배경을 흰색으로 설정 */
+  border-radius: 5px;
+  margin-right: 5px;
+}
+
+/* 체크된 상태의 스타일 */
+.wrap_fundingPay input[type="checkbox"]:checked {
+  background-color: #00b7d4; /* 체크한 경우 배경을 변수 색상으로 설정 */
+}
+
+/* 체크된 상태에서의 체크 표시 */
+.wrap_fundingPay input[type="checkbox"]:checked::before {
+  content: "\2714"; /* 체크 표시 문자 */
+  display: inline-block;
+  width: 17px;
+  height: 17px;
+  line-height: 17px;
+  text-align: center;
+  color: white; /* 흰색으로 설정 */
+  /*체크표시 위치변경*/
+  position: relative;
+  top: -7px;
+}
+
+/* 체크하지 않았을 때의 체크 표시 */
+.wrap_fundingPay input[type="checkbox"]::before {
+  content: "";
+  display: inline-block;
+  width: 17px;
+  height: 17px;
+  line-height: 17px;
+  text-align: center;
+  color: transparent;
+}
+
+
+
+.wrap_fundingPay .quantity_container {
+  display: flex;
+  align-items: center;
+}
+
+.wrap_fundingPay .quantity_button {
+  font-size: 18px;
+  cursor: pointer;
+}
+.wrap_fundingPay .quantity_button_increase{
+  width: 25px;
+  height: 25px;
+  background-color: #00b7d4;
+  border-radius:0px 5px 5px 0px;
+  border: none;
+  color: white;
+}
+.wrap_fundingPay .quantity_button_decrease{
+  width: 25px;
+  height: 25px;
+  background-color: #00b7d4;
+  border-radius:5px 0px 0px 5px;
+  border: none;
+  color: white;
+}
+
+.wrap_fundingPay #quantity {
+  font-size: 18px;
+}
+.wrap_fundingPay .quantity_input{
+  width: 100px;
+  height: 25px;
+  border: none;
+}
+.wrap_fundingPay .reward_item_price label {
+  padding: 2px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+
+}
+
+
+
+.wrap_fundingPay .reward_item_max {
+  font-size: 13px;
+  color: gray;
+  font-weight: normal;
+}
+
+.wrap_fundingPay .reward_item_description,
+.wrap_fundingPay .reward_delivery {
+  font-size: 15px;
+  color: rgb(97, 97, 97);
+  font-weight: normal;
+}
+
+.wrap_fundingPay .close_button_content1 {
+  background-color: #00b7d4;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  color: white;
+  font-size: large;
+  line-height: 21px; /* 수직 정렬을 위한 line-height 조정 */
+  vertical-align: top; /* 오른쪽 위로 조금만 움직임 */
+  padding-left: 1px;
+ 
+}
+
+.wrap_fundingPay #final_sum_price{
+	font-size: 18px;
+}
+
+
+.wrap_fundingPay #additional p{
+	margin-top: 10px;
+
+	  color: #00b7d4;
+}
+
+.wrap_fundingPay #additional_donation{
+	border: 1px solid #e0e0e0;
+}
+
+.wrap_fundingPay #additional{
+		font-size: 20px;
+		border-top: 3px solid #e0e0e0;
+		padding-top: 60px ;
+}
+.wrap_fundingPay #final_sum_price_detail {
+  color: #00b7d4;
+}
+
+.wrap_fundingPay #open_modal_button {
+  margin-top: 50px;
+  margin-left: 30%;
+  margin-bottom: 10%;
+}
+
+.wrap_fundingPay .reward_item_price {
+  border-top: 3px solid #00b8d410;
+  width: 100%;
+  margin-right: 30%;
+  padding-top: 10px;
+}
+
+.wrap_fundingPay #additional_donation {
+    text-align: right;
+}
+
+.wrap_fundingPay .check_icon {
+  float: right;
+}
+
+/* Modal styles */
+
+.wrap_fundingPay .modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.651);
+  z-index: 9999;
+  opacity: 0;
+}
+
+.wrap_fundingPay .modal_content {
+  position: relative;
+  margin: 8% auto;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  width: 450px;
+  padding-top: 20px;
+
+}
+
+.wrap_fundingPay .close_button {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  top: 10px;
+  right: 10px;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.wrap_fundingPay .modal.active {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 1;
+  transition: all 0.5s;
+}
+
+.wrap_fundingPay .modal.active .modal_content {
+  opacity: 1;
+  transform: translateY(0);
+  transform: translateY(-50px);
+  transition: all 0.5s;
+}
+
+.wrap_fundingPay .price_details {
+  display: none;
+  padding: 20px;
+  background-color: #96dcf05e;
+  border-radius: 10px;
+  width: 50%;
+  color: black;
+  margin-bottom: 20px;
+}
+
+.wrap_fundingPay .sum_price,
+.wrap_fundingPay .close_button_content1 {
+  float: right;
+  margin-bottom: 30px;
+}
+
+.wrap_fundingPay #open_modal_button{
+  width: 300px;
+  height: 50px;
+  border: none;
+  background-color: #00b7d4;
+  color: white;
+  border-radius: 10px;
+  font-size: 20px;
+  
+}
+
+.wrap_fundingPay .check_box{
+  margin: 30px;
+}
+
+.wrap_fundingPay .check_next_title  {
+  font-size: 25px;
+  color: #00b7d4;
+  
+}
+.wrap_fundingPay .check_next_title i {
+  font-size: 45px;
+  color: #00b7d4;
+  
+}
+
+.wrap_fundingPay .check_next_main_text i {
+  font-size: 50px;
+  color: #96dcf0;
+  margin-left: 20px;
+}
+
+.wrap_fundingPay .check_next label {
+  display: flex;
+  align-items: center;
+}
+
+.wrap_fundingPay .check_next_main_text {
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+}
+
+.wrap_fundingPay .check_next_content {
+  font-size: 14px;
+}
+
+.wrap_fundingPay .toggle_content {
+  display: none;
+  width: 390px;
+  max-height: 100px;
+  overflow-y: auto;
+  border: 1px solid #ffffff;
+  overflow: auto;
+}
+
+.wrap_fundingPay .toggle_button {
+  margin-top: 20px;
+  cursor: pointer;
+  background-color: #00b8d4c2;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.wrap_fundingPay .toggle_content::-webkit-scrollbar {
+  display: none;
+}
+.wrap_fundingPay .toggle_content p {
+  background-color: #f9f9f9;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #96dcf05e;
+}
+
+
+
+.wrap_fundingPay #check_nextpage{
+  width: 450px;
+  height: 80px;
+  border: none;
+  background-color: #000000a2;
+  color: white;
+  border-radius:0px 0px 10px 10px;
+  font-size: 20px;
+  margin-left: -30px;
+}
+
+.wrap_fundingPay #check_nextpage.active {
+  background-color: #00b7d4;
+  color: white;
+}
+
+.wrap_fundingPay #check_nextpage.active:hover {
+  background-color: #01a4bd;
+  color: white;
+}
+
+
+/* 768px 이하인 경우에만 적용되는 스타일 */
+@media (max-width: 970px) {
+  .wrap_fundingPay #header {
+    display: none;
+  }
+
+  .wrap_fundingPay .purchase_title{
+    height: 50px;
+    font-size: 20px;
+  }
+
+  .wrap_fundingPay #reward_content_box{
+    margin-left: 0%;
+  }
+  .wrap_fundingPay .modal_content {
+    position: relative;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+  
+  }
+  .wrap_fundingPay .check_icon {
+    display: none;
+  }
+
+
+
+  .wrap_fundingPay #check_nextpage{
+    width: 100%;
+    height: 80px;
+    border: none;
+    background-color: #000000a2;
+    color: white;
+    border-radius:10px;
+    font-size: 20px;
+    margin-left: 2px;
+  }
+  
+  .wrap_fundingPay #check_nextpage.active {
+    background-color: #00b7d4;
+    color: white;
+  }
+
+
+  .wrap_fundingPay .toggle_content {
+    display: none;
+    width: 100%;
+    max-height: 100px;
+    overflow-y: auto;
+    border: 1px solid #ffffff;
+    overflow: auto;
+  }
+  .wrap_fundingPay #purchase_wrap{
+    display: none;
+  }
+
+  .wrap_fundingPay h4{
+    margin: 10px 0;
+    font-weight: bold;
+    font-size: 20px;
+  }
+  
+  .wrap_fundingPay #open_modal_button{
+	  margin-left: 0;
+	  width: 100%;
+	  height: 100px;
+  }
+  
+}
+
+
+

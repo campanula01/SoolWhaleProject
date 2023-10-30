@@ -1,0 +1,220 @@
+
+/* 전체 스타일 적용 */
+/* Reset some default styles */
+body, h1, h2, h3, p, ul, li {
+    margin: 0;
+    padding: 0;
+  }
+  
+  .top {
+       width: 100%;
+       height: 2px;
+       background-color: #96dcf056;
+  }
+
+  .middle{
+    border-radius: 30px 30px;
+    height: 150px;
+    background-color: #96dcf03b;
+    max-width: 1150px;
+    margin: 0px auto;
+    padding: 0 20px;
+  
+  }
+  .bottom {
+    width: 100%;
+    height: 6px;
+    background-color: #96dcf03b;
+}
+  
+  body {
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Main Content Styles */
+  .main-content {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 0 20px;
+   
+  }
+  
+  .product-list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4개의 열로 그리드 생성 */
+    grid-gap: 20px;
+    
+  }
+  
+  .product-item {
+    
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid;
+  }
+  
+  .product-item img {
+    max-width: 100%;
+    border-radius: 10%;
+  }
+  
+  .product-info {
+    margin-top: 10px;
+    text-align: center;
+  }
+  
+  .product-title {
+    font-size: 16px;
+    margin-bottom: 5px;
+  }
+  
+  .product-price {
+    font-weight: bold;
+  }
+  
+  
+/* 최소화될 때 이미지가 2개씩 보이도록 설정 */
+@media (max-width: 767px) {
+    .product-list {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+* {
+    text-decoration: none;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 배너 이미지 스타일 */
+.banner img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+/* 슬라이더 스타일 */
+.slider {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.slick-slide {
+    margin: 10px;
+    position: relative; /* 추가 */
+}
+
+.slider_div {
+    position: relative;
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center; /* 추가 */
+}
+
+.slick-prev:before,
+.slick-next:before {
+    color: #444444;
+    font-size: 24px; /* 추가 */
+}
+
+
+/* 기타 스타일 */
+.gap {
+    height: 15px;
+    margin: 0;
+    padding: 0;
+}
+
+.sinsin {
+    color: #00b7d4;
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 18px;
+    margin: 0;
+    width: 80px;
+    border-radius: 40%;
+}
+
+.subject {
+    margin-top: 10px;
+    height: 38px;
+    font-size: 13px;
+    text-align: left;
+    line-height: normal;
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    word-break: break-all;
+    font-weight: bold;
+}
+
+.price {
+    width: 80px;
+    font-weight: bold;
+    font-size: 15px;
+    margin: 0;
+    padding: 0;
+}
+
+.hr {
+    width: 100%;
+    height: 2px;
+    background-color: #eee;
+    margin-top: 10px;
+}
+
+.tage {
+    margin: 10px 0;
+    padding: 0;
+}
+
+.tage > li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-size: 12px;
+    color: #999;
+    font-weight: bold;
+}
+
+
+
+/* 좋아요 버튼 스타일 */
+.likeempty {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #8d1616;
+    cursor: pointer;
+    z-index: 1;
+    transition: color 0.3s ease-in-out;
+}
+
+.slider_div:hover .likeempty {
+    color: #00b7d4;
+}
+
+.fa-regular,
+.fa-solid {
+    position: absolute;
+    display: none;
+    color: #00b7d4;
+}
+
+.fa-solid {
+    display: none;
+}

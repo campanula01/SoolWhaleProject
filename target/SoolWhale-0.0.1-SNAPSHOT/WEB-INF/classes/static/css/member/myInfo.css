@@ -1,0 +1,85 @@
+
+
+.my_btn_list{
+    margin-top:100px;
+    margin-bottom: 35px;
+}
+
+.info_box{
+    display: inline-block;
+    width: 100px;
+    height: 35px;
+    line-height: 35px;
+   
+    text-align: center;
+    font-size: 15px;
+    margin-right:10px;
+}
+
+.info_box a{
+    display: inline-block;
+    width: 100%;
+}
+
+.basic_info{
+    background-color: #96dcf0;
+}
+.point_info{
+    background-color: #ddd;
+}
+
+.info_text{
+    font-size: 30px;
+    font-weight: 600;
+    border-bottom: 1px solid #999;
+    padding-bottom: 20px;
+}
+
+
+
+ table, td{
+    border : 1px solid #999;
+    border-collapse: collapse;
+}
+
+.my_info_table{
+    margin-top:30px;
+    width: 90%;
+  
+}
+.td_mid-title{
+    width: 15%;
+    text-align: right;
+    padding-right:10px;
+}
+
+td{
+    padding: 20px ;
+
+}
+/*input[type="text"] , select {
+    border:1px solid #999;
+    border-radius: 5px;
+}*/
+
+.btn_cl{
+    width: 100%;
+    text-align: center;
+    margin:30px 0;
+    height: 100px;
+}
+
+.re_btn{
+	padding:0 30px;	
+	height: 35px;
+	line-height: 35px;
+}
+
+.pre_btn, .cancle_btn{
+    padding:0 30px;
+    height: 35px;
+    margin-right:10px;
+    cursor: pointer;
+    border:1px solid #798;
+    line-height: 35px;
+}

@@ -1,0 +1,261 @@
+*{
+  margin:0;
+  padding:0;
+  box-sizing: border-box;
+  list-style: none;
+}
+
+#like_top{
+    margin:100px 0 0 0;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+    line-height: 20px;
+    width: 88%;
+    min-width:fit-content;
+}
+.like_title{
+    font-size: 30px;
+    
+}
+.soolLike_select{
+    float: right;
+    padding:5px;
+    border:1px solid #ddd;
+}
+
+.soollike_list{
+  width: 80%;
+  height: 150px;
+  border : 1px solid #ddd;
+  box-sizing: border-box;
+  margin-top:25px;
+  max-width: 80%;
+}
+
+.soollike_img{
+  display: inline-block;
+  width: 120px;
+  height: 120px;
+}
+
+.simg{
+  width: 100%;
+  height: 100%;
+  margin:15px 10px;  
+}
+
+.soolproject_title{
+  height: 20px; 
+  width: 100%;
+}
+.soollike_ddd{
+  width : 77%;
+  float: right;
+  margin:15px 0px;
+  position:relative;
+}
+.soollike_ul{
+  height: 70px;
+  width: 100%;
+}
+.soolproject_title{
+  font-size: 16px;
+  border-bottom: 1px solid #ddd;
+  height: 50px;
+  line-height: 50px;
+  width: 100%;
+}
+
+ .project_title{
+  white-space:nowrap;
+  width: 90%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: inline-block;
+}
+
+
+.likeempty{
+  font-size:22px;
+  width: 22px;
+  height: 22px;
+  display: inline-block;
+  position:relative;
+  margin-right:15px;
+}
+  
+.fa-regular{
+  position:absolute;
+  display: none;
+  color:#00b7d4;
+
+}
+    
+.fa-solid{    
+  position:absolute;
+  color:#00b7d4;
+}
+
+.price{
+  margin: 15px 0;
+}
+
+.tage_ul{
+  margin-top:30px;
+  font-size: 13px;
+  color:#999;
+}
+.tage{
+  display: inline;
+  margin-right:5px;
+}
+
+
+.progress_bar{
+    position:relative;
+    width: 80%;
+    height: 25px;
+    border: 1px solid green;
+    float:right;
+    right:70px;
+    border-radius: 5px;
+    
+}
+
+
+
+/***********09/17 추가  ******/
+
+.bar{
+    position:absolute;
+    left:0;
+    top:0;
+    bottom: 0;
+    width: 0%;
+    background: green;
+   
+}
+
+.rate{
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left:-10%;
+    color:green;
+    font-weight: 700;
+}
+
+
+
+
+.like_select {
+  margin-left: 20px;
+}
+.like_select >span {
+  margin: 0 20px;
+  font-size: 16px;
+  position:relative;
+  display: inline-block;
+}
+.like_select >span:hover{
+  cursor: pointer;
+}
+
+
+.like_select >span::after{
+  content:"";
+  position: absolute;
+  display: inline-block;
+  width: 1px;
+  height: 20px;
+  border:1px solid #999;
+  right:-20px;
+}
+
+.like_select >span:last-child::after{
+  display: none;
+}
+
+
+@media screen and (max-width: 768px) {
+  /* 화면 너비가 768px 이하인 경우에만 적용되는 스타일 */
+  body {
+    background-color: bisque;
+  }
+  .soollike_list{
+    width:100%;
+    height: 150px;
+    border : 1px solid #ddd;
+    box-sizing: border-box;
+    margin-top:25px;
+    max-width: 750px;
+  }
+.soollike_ddd{
+  width : 500px;
+  float: right;
+  margin:15px 30px;
+  position:relative;
+}
+.soollike_ul{
+  height: 70px;
+  width: 100%;
+
+}
+.soolproject_title{
+  font-size: 16px;
+  border-bottom: 1px solid #ddd;
+  height: 50px;
+  line-height: 50px;
+  width: 100%;
+}
+
+ .project_title{
+  white-space:nowrap;
+  width: 90%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: inline-block;
+}
+
+
+.likeempty{
+  font-size:22px;
+  width: 22px;
+  height: 22px;
+  display: inline-block;
+  position:relative;
+  margin-right:15px;
+}
+  
+.fa-regular{
+  position:absolute;
+  display: none;
+  color:#00b7d4;
+}
+    
+.fa-solid{    
+  position:absolute;
+  color:#00b7d4;
+}
+
+.price{
+  margin: 15px 0;
+}
+
+.tage_ul{
+  margin-top:30px;
+  font-size: 13px;
+  color:#999;
+}
+.tage{
+  display: inline;
+  margin-right:5px;
+}
+
+  
+
+  #wrap_aside{
+      display: none;
+  }
+}
+

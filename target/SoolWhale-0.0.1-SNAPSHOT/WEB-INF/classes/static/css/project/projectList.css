@@ -1,0 +1,172 @@
+.project_status_select > button {
+    border: none;
+    border-radius: 20px;
+    width: 80px;
+    height: 40px;
+    margin: 10px 5px 0 0;
+    background-color: #e7e7e7;
+    color: #333;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+img{
+	border-radius: 10px;
+}
+
+.project_status_select > button:hover {
+    background-color: rgb(171, 171, 171);
+    color: #fff;
+}
+
+#newProjectInsert {
+    background-color: rgb(152, 206, 250);
+    margin: 10px 20px 12px 0;
+    font-size: 20px;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+#newProjectInsert:hover {
+    background-color: rgb(125, 187, 255);
+}
+
+.project_status_all,
+.project_status_writing,
+.project_status_reviewing,
+.project_status_accept,
+.project_status_refuse,
+.project_status_openWaiting,
+.project_status_ongoing,
+.project_status_end {
+    background-color: rgb(231, 231, 231);
+    color: #000;
+}
+
+.project_status_button_active {
+    background-color: rgb(152, 206, 250) !important;
+    color: #000 !important;
+}
+
+.title{
+	display: flex;
+	justify-content: space-between;
+	margin-top: 20px;
+	font-size: 40px;
+	font-weight: bold;
+}
+.project_status{margin: 20px;}
+
+.wrap_project_list{
+    margin-top: 10px;
+    padding-left: 10px;
+    max-width: 850px;
+    height: 152px;
+    border: 1px solid #e0e0e0;
+    display: flex;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    background-color:rgb(234, 245, 255);
+}
+.thumbnail_image{
+    margin-top: 5px;
+    width: 140px;
+    height: 140px;
+    display: flex;
+    flex-wrap: nowrap;
+}
+.project_thumbnail_image{
+    width: 140px;
+    height: 140px;
+}
+.project_package{
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    margin: 10px 20px 10px 20px;
+}
+.project_package > p{
+    margin: 3px 0;
+    max-width: 100%;
+}
+.project_thumbnail_status > span{
+    padding: 0 3px;
+    border: 1px solid rgb(228, 228, 228);
+    border-radius: 5px;
+    background-color: rgb(241, 241, 241);
+}
+.project_thumbnail_title{
+	font-weight: bold;
+	font-size: large;
+	margin-top: 10px;
+}
+.project_thumbnail_content{
+	margin-top: 5px;
+}
+.project_controll{
+    width: 150px;
+    margin:auto;
+    padding-right: 20px;
+}
+
+.projectUpdateBtn, .projectDeleteBtn{
+    width: 110px;
+    height: 35px;
+    color: white;
+    background-color: rgb(115, 188, 249);
+    border: 1px solid rgb(167, 167, 167);
+    border-radius: 5px;
+}
+
+.projectUpdateBtn:hover, .projectDeleteBtn:hover{
+    background-color: rgb(14, 141, 245);
+}
+
+.projectDeleteBtn{
+    margin-top: 10px;
+}
+
+@media (max-width: 760px) {
+    .thumbnail_image {
+        display: none;
+    }
+
+    .wrap_project_list {
+        height: 160px;
+        align-items: center;
+        text-align: center;
+        flex-direction: column;
+    }
+
+    .project_package {
+        margin: 10px 0;
+        max-width: 100%;
+    }
+
+    .project_controll {
+        display: flex;
+        padding-right: 0;
+        margin-top: 10px;
+        text-align: center;
+        max-width: 100%;
+        width: 100px;
+        margin:none;
+        padding-right: none;
+    }
+    .projectUpdateBtn, .projectDeleteBtn{
+        width: 50px;
+    }
+    .wrap_my_project {
+        padding: 20px; /* 내용 전체 패딩 추가 */
+    }
+    .projectDeleteBtn{
+        margin-top: 0px;
+    }
+
+
+}

@@ -1,0 +1,191 @@
+.slick-prev::before {
+
+	content: "\f104";
+	/* "\f104"는 Font Awesome에서 왼쪽 화살표 아이콘의 유니코드입니다. */
+
+	font-family: "Font Awesome 5 Free";
+	/* Font Awesome 5 아이콘 폰트 사용 설정 */
+
+	font-weight: 900;
+	/* Font Awesome 아이콘의 두께 설정 */
+
+	font-size: 20px;
+	/* 아이콘 크기 조절 */
+
+	color: #999;
+	/* 아이콘 색상 설정 */
+
+}
+
+
+
+.slick-next::before {
+
+	content: "\f105";
+	/* "\f105"는 Font Awesome에서 오른쪽 화살표 아이콘의 유니코드입니다. */
+
+	font-family: "Font Awesome 5 Free";
+	/* Font Awesome 5 아이콘 폰트 사용 설정 */
+
+	font-weight: 900;
+	/* Font Awesome 아이콘의 두께 설정 */
+
+	font-size: 20px;
+	/* 아이콘 크기 조절 */
+
+	color: #999;
+	/* 아이콘 색상 설정 */
+
+}
+
+
+/* 배너 이미지 스타일 */
+
+.banner img {
+
+	display: block;
+
+	width: 100%;
+
+	height: 200px;
+
+	object-fit: cover;
+
+}
+
+
+
+/* 배너 버튼 스타일 */
+
+.banner .slick-prev,
+
+.banner .slick-next {
+
+	z-index: 1;
+	/* 다른 요소 위에 표시하기 위한 z-index 설정 */
+
+}
+
+
+
+.banner .slick-prev {
+
+	left: 15px;
+	/* 왼쪽 버튼의 위치 설정 */
+}
+
+
+
+.banner .slick-next {
+
+	right: 15px;
+	/* 오른쪽 버튼의 위치 설정 */
+}
+
+
+
+/* 배너 이미지 스타일 */
+.banner img {
+    display: block;
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
+
+
+
+.slick-slide {
+    margin: 10px;
+    position: relative; /* 추가 */
+    z-index: 0; /* 슬라이드 요소 위로 */
+}
+
+.slider_div {
+    position: relative;
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(141, 134, 134, 0.1);
+    text-align: center; /* 추가 */
+}
+
+.slider .slick-prev:before,
+.slider .slick-next:before {
+    color: #444444;
+    font-size: 24px; /* 추가 */
+  
+}
+
+
+.product-title {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 18px;
+    text-align: center;
+    line-height: normal;
+    word-break: break-all;
+    font-weight: bold;
+}
+
+.product-price {
+    padding-bottom: 10px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 15px;
+    margin: 0;
+    padding: 0;
+}
+.product-tage {
+    margin-top: 10px;
+    color: grey;
+    font-size: 12px;
+
+}
+
+
+
+
+.wrap_center_main .likeempty {
+    font-size: 20px;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    color: #00b7d4;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 1;
+    transition: color 0.3s ease-in-out;
+  }
+  
+  .wrap_center_main .product-item:hover .likeempty {
+    color: #8d1616;
+  }
+  .wrap_center_main .fa-heart{
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+  }
+  .wrap_center_main likeempty .fa-regular,
+  .fa-solid {
+    position: absolute;
+    color: #00b7d4;
+  }
+  
+  .wrap_center_main likeempty .fa-regular {
+    display: block;
+  }
+  
+  .wrap_center_main likeempty .fa-solid {
+    display: none;
+  }
+  
+  .slider img{
+    height: 250px;
+  }
+  
+  .mainImage{
+	  margin:0 auto;
+	  border-radius: 10px;
+  }

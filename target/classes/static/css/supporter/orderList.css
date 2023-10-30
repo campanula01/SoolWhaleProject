@@ -1,0 +1,57 @@
+.order_text{
+    margin-top:100px;
+    font-size: 30px;
+}
+
+.order_list{
+    margin-top:30px;
+}
+
+.order{
+    color:#333;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table, th, td{
+	
+	border: 1px solid #888;
+	border-left: none;
+	border-right:none;
+	
+}
+
+th{
+	height:55px;
+	line-height: 55px;
+	font-size:16px;
+	 background-color: #96dcf0;
+}
+.order_no{
+	width:10%;	
+}
+
+.or_date{
+	width: 18%;
+}
+.or_deli{
+	width: 15%;
+}
+
+.or_conf{
+	width: 20%;
+}
+
+td{
+	height:50px;
+	line-height: 50px;
+	padding-left:15px;
+}
+
+.btn_style{
+	margin: 3px 0 3px 20px;
+	display: inline-block;
+	width:80%;
+	height: 35px;
+	line-height: 35px;
+}

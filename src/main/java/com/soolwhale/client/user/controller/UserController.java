@@ -98,7 +98,7 @@ public class UserController {
 
 	@RequestMapping(value = "/callback", method = RequestMethod.GET)
 	public String callBack() {
-		return "/client/member/callback";
+		return "/SoolWhale/client/member/callback";
 	}
 
 	@RequestMapping(value = "/naverSave", method = RequestMethod.POST)
@@ -551,7 +551,7 @@ public String myInfoPage(Model model,@SessionAttribute("user") UserVO user, Http
 		result = userService.myInfoUpdate(user);
 		
 		if(result == 1) {
-			url = "/member/myInfo";
+			url = "/SoolWhale/member/myInfo";
 		}else {
 			
 			url ="/";

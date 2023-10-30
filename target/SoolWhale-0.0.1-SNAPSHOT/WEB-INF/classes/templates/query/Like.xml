@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.soolwhale.client.like.dao.LikeDao">
+<resultMap type="like" id="likeResultMap">
+	<id column="like_num" property="likeNum"/>
+    <result column="project_num" property="projectNum"/>
+    <result column="user_num" property="userNum"/>
+    	<association property="project">
+			<result column="project_num" property="projectNum"/>
+			<result column="title" property="title"/>
+			<result column="w_desc" property="projectDesc"/>
+			<result column="sts" property="sts"/>
+			<result column="start_date" property="startDate"/>
+			<result column="end_date" property="endDate"/>
+				
+			<result column="target_amount" property="targetAmount"/>
+		</association>
+		
+		<association property="user">
+			<result column="name" property="name"/>
+			<result column="user_num" property="userNum" />
+		</association>
+		
+</resultMap>
+
+
+	
+	<select id="likeAllList" parameterType="like"  resultMap="likeResultMap">
+		SELECT
+    	<!-- wu.name AS name, wp.title AS title, wp.start_date, wp.end_date, wp.sts, wu.user_num , wp.target_amount, wp.w_desc, like_num as likeNum -->
+		*
+		FROM   w_user wu
+		INNER JOIN w_like wl ON wu.user_num = wl.user_num
+		INNER JOIN  w_project wp ON wl.project_num = wp.project_num
+		
+    	order by wp.sts
+    
+    </select>
+    
+<select id="likeAfter" parameterType="like" resultMap="likeResultMap">
+    <![CDATA[
+    SELECT
+    wu.name, wp.title, wp.start_date, wp.end_date, wp.sts, wu.user_num , wp.target_amount, wp.w_desc, like_num 
+    FROM w_user wu
+    INNER JOIN w_like wl ON wu.user_num = wl.user_num
+    INNER JOIN w_project wp ON wl.project_num = wp.project_num
+    WHERE wp.end_date < sysdate and wu.user_num='123123'
+    ORDER BY wp.sts
+    ]]>
+</select>
+
+<select id="likeBefore" parameterType="like" resultMap="likeResultMap">
+    <![CDATA[
+    SELECT
+    wu.name AS name, wp.title AS title, wp.start_date, wp.end_date, wp.sts, wu.user_num , wp.target_amount, wp.w_desc,like_num as likeNum
+    FROM w_user wu
+    INNER JOIN w_like wl ON wu.user_num = wl.user_num
+    INNER JOIN w_project wp ON wl.project_num = wp.project_num
+    WHERE wp.start_date > sysdate
+    ORDER BY wp.sts
+    ]]>
+</select>
+<select id="likeIng" parameterType="like" resultMap="likeResultMap">
+    <![CDATA[
+  SELECT
+    wu.name AS name, wp.title AS title, wp.start_date, wp.end_date, wp.sts, wu.user_num , wp.target_amount, wp.w_desc,like_num as likeNum
+FROM w_user wu
+INNER JOIN w_like wl ON wu.user_num = wl.user_num
+INNER JOIN w_project wp ON wl.project_num = wp.project_num
+WHERE wp.start_date < sysdate AND sysdate < wp.end_date
+ORDER BY wp.sts
+    ]]>
+</select>
+
+
+<insert id="likeInsert" >
+<selectKey keyProperty="likeNum" resultType="String" order="BEFORE">
+        select 'L' || TO_CHAR(SYSDATE, 'YYYYMMDDHH24MISS') || L_SEQ.NEXTVAL from dual
+    </selectKey>
+insert into w_like(like_num, project_num, user_num)
+values(#{likeNum}, #{projectNum}, #{userNum})
+</insert>
+
+<delete id="likeDelete" >
+delete from w_like where user_num=#{userNum} and project_num=${projectNum}
+</delete>
+
+<select id="likeStatus" resultType="int">
+select count(distinct like_num) from w_like where user_num=#{userNum} and project_num=${projectNum}
+</select>
+</mapper>

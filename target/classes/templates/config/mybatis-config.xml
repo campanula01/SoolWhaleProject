@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<typeAliases>
+		<typeAlias type="com.soolwhale.client.project.vo.ProjectVO" alias="project" />
+		<typeAlias type="com.soolwhale.client.image.vo.ImageVO" alias="image" />
+		<typeAlias type="com.soolwhale.client.reward.vo.RewardVO" alias="reward" />
+		<typeAlias type="com.soolwhale.client.payment.vo.PaymentVO" alias="payment" />
+		<typeAlias type="com.soolwhale.client.point.vo.PointVO" alias="point" />
+		<typeAlias type="com.soolwhale.client.address.vo.AddressVO" alias="address" />
+		<typeAlias type="com.soolwhale.admin.answer.vo.AnswerVO" alias="answer" />
+		<typeAlias type="com.soolwhale.admin.manager.vo.ManagerVO" alias="manager" />
+		<typeAlias type="com.soolwhale.client.inquiry.vo.InquiryVO" alias="inquiry" />
+		<typeAlias type="com.soolwhale.client.order.vo.OrderVO" alias="order" />
+		<typeAlias type="com.soolwhale.common.vo.CommonVO" alias="common" />
+		<typeAlias type="com.soolwhale.client.user.vo.UserVO" alias="user" />
+		<typeAlias type="com.soolwhale.client.like.vo.LikeVO" alias="like" />
+		<typeAlias type="com.soolwhale.client.board.vo.BoardVO" alias="board" />
+		<typeAlias type="com.soolwhale.client.reply.vo.ReplyVO" alias="reply" />
+	</typeAliases>
+</configuration>

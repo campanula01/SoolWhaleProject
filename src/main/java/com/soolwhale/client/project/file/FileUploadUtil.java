@@ -37,7 +37,7 @@ public class FileUploadUtil {
 		if(org_name != null && (!org_name.equals(""))) {
 			real_name = firstImgFilename + "_" + System.currentTimeMillis() + "_" + org_name; //저장할 파일 이름
 			
-			String docRoot = "C://springdeveloper/springbootcoding/SoolWhale/src/main/resources/static/img/project/uploadStorage//"+firstImgFilename;
+			String docRoot = "/home/tomcat/file/"+firstImgFilename;
 			makeDir(docRoot);
 			
 			File fileAdd = new File(docRoot+"/"+real_name);
@@ -53,7 +53,7 @@ public class FileUploadUtil {
 		log.info("fileDelete 호출 성공");
 		boolean result = false;
 		String dirName = firstImgFilename.substring(0, firstImgFilename.indexOf("_"));
-		String docRoot = "C://springdeveloper/springbootcoding/SoolWhale/src/main/resources/static/img/project/uploadStorage/"+dirName;
+		String docRoot = "/home/tomcat/file/"+dirName;
 		File fileDelete = new File(docRoot+"/"+firstImgFilename);
 		
 		if(fileDelete.exists() && fileDelete.isFile()) {
@@ -70,7 +70,7 @@ public class FileUploadUtil {
 		String name = "";
 		// 파일명 변경(중복되지 않게) 
 		if(!imgFile.isEmpty()){
-			String docRoot = "C://springdeveloper/springbootcoding/SoolWhale/src/main/resources/static/img/project/detailImageStorage/"+imgFilename;
+			String docRoot = "/home/tomcat/file/"+imgFilename;
 			makeDir(docRoot);
 			File fileAdd = null;
 			for(MultipartFile MultiFile : imgFile) {
@@ -91,7 +91,7 @@ public class FileUploadUtil {
 		log.info("fileDelete 호출 성공");
 		boolean result = false;
 		String dirName = firstImgFilename.substring(0, firstImgFilename.indexOf("_"));
-		String docRoot = "C://springdeveloper/springbootcoding/SoolWhale/src/main/resources/static/img/project/detailImageStorage/"+dirName;
+		String docRoot = "/home/tomcat/file/"+dirName;
 		File fileDelete = new File(docRoot+"/"+firstImgFilename);
 		
 		if(fileDelete.exists() && fileDelete.isFile()) {

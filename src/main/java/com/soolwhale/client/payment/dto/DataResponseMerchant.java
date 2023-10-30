@@ -9,10 +9,10 @@ import lombok.Setter;
 @Setter
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class DataResponseMerchant {
-	
-	private String merchantUid;
-	private String status;
-	private String amount;
-	
+   
+   private String merchantUid;
+   private String status;
+   private String amount;
+   
 
 }

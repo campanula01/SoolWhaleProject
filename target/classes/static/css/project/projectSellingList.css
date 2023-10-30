@@ -1,0 +1,179 @@
+.title{
+
+	margin-top: 20px;
+	font-size: 40px;
+	font-weight: bold;
+}
+
+.project_status {
+	margin: 20px;
+}
+
+.wrap_project_list {
+	margin-top: 10px;
+	padding-left: 10px;
+	max-width: 850px;
+	height: 152px;
+	border: 1px solid #e0e0e0;
+	display: flex;
+	border-radius: 5px;
+	margin-bottom: 10px;
+	background-color: rgb(234, 245, 255);
+}
+
+.thumbnail_image {
+	margin-top: 5px;
+	width: 140px;
+	height: 140px;
+	display: flex;
+	flex-wrap: nowrap;
+}
+
+.project_thumbnail_image {
+	width: 140px;
+	height: 140px;
+}
+
+.project_package {
+	width: 77%;
+	display: flex;
+	flex-direction: column;
+	margin: 10px 0 10px 20px;
+}
+
+.project_package>p {
+	margin: 3px 0;
+	max-width: 100%;
+}
+
+.project_thumbnail_status>span {
+	padding: 0 3px;
+	border: 1px solid rgb(228, 228, 228);
+	border-radius: 5px;
+	background-color: rgb(241, 241, 241);
+}
+
+.project_thumbnail_title {
+	font-weight: bold;
+	font-size: large;
+	max-width: 90%;
+}
+
+.project_controll {
+	width: 150px;
+	margin: auto;
+	padding-right: 20px;
+}
+
+.projectUpdateBtn,
+.projectDeleteBtn {
+	width: 110px;
+	height: 35px;
+	background-color: rgb(245, 245, 245);
+	border: 1px solid rgb(221, 221, 221);
+	border-radius: 5px;
+}
+
+.projectDeleteBtn {
+	margin-top: 10px;
+}
+/*
+.goal-message {
+  text-align: left;
+  font-size: 18px;
+  font-weight: bold;
+  color:white;
+  -webkit-text-stroke: 0.1px black;
+}
+*/
+.goal-message {
+  top: 50%; 
+  left: 10px;
+  font-size: 18px;
+  font-weight: bold;
+  color: black;
+}
+
+.goal_amount {
+  font-size: 12px;
+  font-weight: 400;
+  -webkit-text-stroke: 0.2px white;
+  color: black;
+}
+/*
+.percent{
+	margin-left: auto;
+	font-weight: bold;
+	font-size: large;
+	color:white;
+	-webkit-text-stroke: 0.1px black;
+}
+*/
+.percent {
+  top: 50%; /* 원하는 세로 위치로 조정 */
+  right: 10px; /* 원하는 가로 위치로 조정 */
+  font-weight: bold;
+  font-size: large;
+  color: black; /* 텍스트 색상을 원하는 색상으로 조정 */
+}
+.progress-bar {
+  width: 95%;
+  height: 45px;
+  background-color:white;
+  border-radius: 8px;
+  margin-top: 10px;
+}
+
+.progress-fill {
+  height: 100%;
+  width: 0;
+  border-radius: 8px;
+  background-color: rgb(81, 172, 255);
+  transition: width 2s ease;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px;
+}
+
+@media (max-width: 760px) {
+	.thumbnail_image {
+		display: none;
+	}
+
+	.wrap_project_list {
+		height: 160px;
+		align-items: center;
+		text-align: center;
+		flex-direction: column;
+	}
+
+	.project_package {
+		margin: 10px 0;
+		max-width: 100%;
+	}
+
+	.project_controll {
+		display: flex;
+		padding-right: 0;
+		margin-top: 10px;
+		text-align: center;
+		max-width: 100%;
+		width: 100px;
+		margin: none;
+		padding-right: none;
+	}
+
+
+	.wrap_my_project {
+		padding: 20px;
+		/* 내용 전체 패딩 추가 */
+	}
+
+
+	
+	.goal_amount {
+		display: none;
+	}
+
+}

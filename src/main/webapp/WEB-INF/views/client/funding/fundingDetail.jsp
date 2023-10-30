@@ -15,29 +15,31 @@
     <title>제품 상세 페이지</title>
     
 
-   <script src="/resources/js/common/jquery-3.7.0.min.js"></script>
-  <script src="/resources/js/common/jquery-1.12.4.min.js"></script>
-  <link rel="stylesheet" href="/resources/css/funding/fundingDetail.css">
+   <script src="/SoolWhale/resources/js/common/jquery-3.7.0.min.js"></script>
+  <script src="/SoolWhale/resources/js/common/jquery-1.12.4.min.js"></script>
+  <link rel="stylesheet" href="/SoolWhale/resources/css/funding/fundingDetail.css">
   
-  <script src="/resources/js/funding/fundingDetail.js"></script>
+  <script src="/SoolWhale/resources/js/funding/fundingDetail.js"></script>
 
     <script src="https://kit.fontawesome.com/312ff11b0d.js" crossorigin="anonymous"></script>
     
     
-    <link rel="stylesheet" href="/resources/css/common/common.css">
-    <link rel="stylesheet" href="/resources/css/common/header.css">
-    <script src="/resources/js/common/common.js"></script>
-    <script src="/resources/js/common/header.js"></script>
+    <link rel="stylesheet" href="/SoolWhale/resources/css/common/common.css">
+    <link rel="stylesheet" href="/SoolWhale/resources/css/common/header.css">
+    <script src="/SoolWhale/resources/js/common/common.js"></script>
+    <script src="/SoolWhale/resources/js/common/header.js"></script>
     <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
     <script>
     var projectNum1 = "${projectDetail.projectNum}";
     var projectTitle1 = "${projectDetail.title}";
-    var projectImg1 = "http://localhost:8080/resources/img/project/uploadStorage/project/" + encodeURIComponent("${projectDetail.firstImgFilename}");
+    var projectImg1 = "http://13.124.185.70:8080//home/tomcat/file/project/"+encodeURIComponent("${projectDetail.firstImgFilename}");
     var projectDesc1 = "${projectDetail.projectDesc}";
 
+    console.log("http://13.124.185.70:8080/home/tomcat/file/project/"+encodeURIComponent("${projectDetail.firstImgFilename}"));
     Kakao.init('69d8c5c31722f274d01b6a59f77df9cc'); // 초기화
 
     function sendLink() { // 카카오톡 공유하기
+    	
         Kakao.Link.sendDefault({
             objectType: "feed",
             content: {
@@ -46,18 +48,16 @@
                 imageUrl: projectImg1,
                 link: {
                     mobileWebUrl: 'https://developers.kakao.com/docs/js/kakaotalklink#텍스트-템플릿-보내기',
-                    webUrl: 'http://localhost:8080/project/fundingDetailView?projectNum=' + projectNum1
+                    webUrl: 'http://13.124.185.70:8080/SoolWhale/project/fundingDetailView?projectNum=' + projectNum1
                 }
             },
         });
     }
-    
-
 
     </script>
     
 
-    <script src="/resources/js/common/delayPayment.js"></script>
+    <script src="/SoolWhale/resources/js/common/delayPayment.js"></script>
 </head>
 <body>
 <input type="hidden" id="projectNum" value="${projectDetail.projectNum }" />
@@ -96,7 +96,7 @@
                     <!-- Slide 1 -->
                     <div class="product-slide">
                         <!-- 이미지 -->
-						 <img src="/resources/img/project/uploadStorage/project/${projectDetail.firstImgFilename}" alt="">
+						 <img src="/home/tomcat/file/project/${projectDetail.firstImgFilename}" alt="">
                     </div>
                 </div>
 
@@ -143,7 +143,7 @@
                 
       				<c:forEach var="image" items="${imageListProject}">
             			
-               <img src="/resources/img/project/detailImageStorage/multiple/${image.imgFilename}" alt="">
+               <img src="/home/tomcat/file/multiple/${image.imgFilename}" alt="">
                 
          
         			</c:forEach>
@@ -157,7 +157,7 @@
     <div class="creator-profile">
         <div class="profile-container">
             <div class="profile-image">
-                <img src="/resources/img/project/uploadStorage/project/${projectDetail.firstImgFilename}" alt="">
+                <img src="/home/tomcat/file/project/${projectDetail.firstImgFilename}" alt="">
             <h2>${projectDetail.makerName }</h2>
         </div>
         ${projectDetail.makerDesc }

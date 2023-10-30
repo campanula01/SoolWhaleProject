@@ -123,7 +123,7 @@ public class PaymentController {
 	    
 	    log.info("rewardArray: "+products);
 	    products.forEach(product -> System.out.println(product.getName())); // 각 상품의 이름 출력
-	    return ResponseEntity.ok("/address/addressList");
+	    return ResponseEntity.ok("/SoolWhale/address/addressList");
 	}
 
 
@@ -193,7 +193,7 @@ public class PaymentController {
 		session.setAttribute("paymentComplete", paymentComplete);
 	
 		log.info("fundingPayComplete 페이지 불러오기, 데이터 삽입");
-		return ResponseEntity.ok("/payment/fundingPayComplete");
+		return ResponseEntity.ok("/SoolWhale/payment/fundingPayComplete");
 	}
 	
 	
@@ -270,11 +270,12 @@ public class PaymentController {
 	
 	
 	
-	@Value("${iamport.api-key}")
+	@Value("${IAMPORT_API_KEY:}")
 	private String IAMPORT_API_KEY;
 
-	@Value("${iamport.api-secret}")
-	private String IAMPORT_API_SECRET;	
+	@Value("${IAMPORT_API_SECRET:}")
+	private String IAMPORT_API_SECRET;
+
 	
 	 // RestTemplate 빈 주입
     private final RestTemplate restTemplate;
@@ -291,22 +292,6 @@ public class PaymentController {
 	
 	/*api*/
 	 /*빌링키 발급*/
-    @PostMapping("/subscribe/customers/{customer_uid}")
-    public ResponseEntity<String> tokenBilling(
-        @PathVariable String customer_uid, 
-        @RequestParam("_token") String token) {
-    	this.iamportToken = token;  // 토큰 저장
-        
-        // 이제 customer_uid와 token 변수에 해당 값을 가지고 있습니다.
-        
-        String result = paymentService.tokenBilling(customer_uid, token); 
-        System.out.println("빌링키: " + customer_uid);  // 빌링키 출력
-        if ("Success".equals(result)) {
-            return ResponseEntity.ok(result);
-        } else {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Token billing failed");
-        }
-    }
 
     @PostMapping("/saveScheduledPayment")
     public ResponseEntity<?> saveScheduledPayment(@RequestBody PaymentAPIDto paymentApiDto) {

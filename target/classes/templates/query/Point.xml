@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.soolwhale.client.point.dao.PointDao">
+	<resultMap type="point" id="pointResultMap">
+		<result column="point_num" property="pointNum" />
+		<result column="point_sum" property="pointSum" />
+		<result column="point_date" property="pointDate" />
+		<result column="point_desc" property="pointDesc" />
+		<result column="point_delete" property="pointDelete" />
+		<result column="user_num" property="userNum" />
+		<result column="payment_num" property="paymentNum" />
+		<association property="payment">
+			<result column="payment_num" property="paymentNum" />
+			<result column="payment_date" property="paymentDate" />
+			<result column="add_point" property="addPoint" />
+		</association>
+	</resultMap>
+
+	<insert id="pointInsert">
+		<selectKey keyProperty="pointNum" resultType="String"
+			order="BEFORE">
+			select 'P' || TO_CHAR(SYSDATE, 'YYYYMMDDHH24MISS') || P_SEQ.NEXTVAL from
+			dual
+		</selectKey>
+		INSERT INTO user_point(point_num, point_sum, point_date, point_desc,
+		point_delete, user_num, payment_num)
+		values(#{pointNum}, FLOOR(#{vo.pointSum}), sysdate+10,'리워드 적립', sysdate+375, #{userNum},
+		'PAY' || TO_CHAR((SELECT max(CAST(REPLACE(payment_num, 'PAY', '') AS
+		INT)) from w_payment where user_num=#{userNum})))
+	</insert>
+
+
+
+	<select id="pointSum" parameterType="String"
+		resultMap="pointResultMap">
+		select point_sum
+		from user_point
+		where user_num=#{userNum}
+		and point_num = 'P' || TO_CHAR(
+		(SELECT MAX(CAST(REPLACE(point_num, 'P', '') AS INT))
+		FROM user_point
+		where user_num=#{userNum})
+		)
+	</select>
+
+	<select id="pointCheckList" resultMap="pointResultMap">
+
+		SELECT
+		wp.payment_date,
+		up.point_sum,
+		up.point_desc,
+		up.point_delete,
+		wp.user_num,
+		wp.add_point
+		FROM
+		w_payment wp
+		JOIN
+		user_point up
+		ON
+		wp.payment_num = up.payment_num
+		AND wp.user_num = up.user_num
+		WHERE wp.user_num = #{userNum}
+		ORDER BY point_date DESC
+	</select>
+</mapper>

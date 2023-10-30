@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.soolwhale.client.address.dao.AddressDao">
+
+<resultMap type="address" id="addressResultMap">
+    <id column="addr_num" property="addrNum" />
+    <result column="zipcode" property="zipcode" />
+    <result column="addr" property="addr" />
+    <result column="addr_detail" property="addrDetail" />
+    <result column="recipient" property="recipient" />
+    <result column="req" property="req" />
+    <result column="tel" property="tel" />
+    <result column="user_num" property="userNum"/>
+    <association property="point">
+    	<result column="point_sum" property="pointSum"/>
+    </association>
+    <association property="user">
+    	<id column="user_num" property="userNum"/>
+    	<result column="name" property="name"/>
+    	<result column="email" property="email"/>
+    	<result column="phone_number" property="phoneNumber"/>
+    </association>
+</resultMap>
+
+
+
+<!-- SQL 쿼리를 수정 property는 별칭-->
+<select id="addressList" resultMap="addressResultMap" parameterType="string">
+	SELECT addr_num, zipcode, addr, addr_detail, recipient, req, tel FROM w_address WHERE user_num = #{userNum,jdbcType=VARCHAR}
+</select>
+<insert id="addressInsert" > 
+ 	<selectKey keyProperty="addrNum" resultType="String" order="BEFORE">
+        select 'A' || TO_CHAR(SYSDATE, 'YYYYMMDDHH24MISS') || A_SEQ.NEXTVAL from dual
+    </selectKey>
+    
+INSERT INTO w_address (addr_num, zipcode, addr, addr_detail, recipient, tel, req,user_num)
+VALUES (#{addrNum}, #{avo.zipcode}, #{avo.addr}, #{avo.addrDetail}, #{avo.recipient}, #{avo.tel},#{avo.req},#{userNum,jdbcType=VARCHAR})
+</insert>
+
+ 	<!-- 레코드 개수 확인 -->
+    <select id="countAddress" resultType="int">
+        SELECT COUNT(*) FROM w_address where user_num=#{userNum}
+    </select>
+
+    <!-- 가장 낮은 addr_num에 해당하는 데이터 삭제 -->
+    <delete id="deleteOldestAddress" parameterType="String">
+        DELETE FROM w_address 
+    	WHERE user_num=#{userNum,jdbcType=VARCHAR}
+    		AND addr_num = (
+        	SELECT 'A' || TO_CHAR(MIN(TO_NUMBER(REPLACE(addr_num, 'A', ''))))
+        	FROM w_address
+        	WHERE user_num=#{userNum,jdbcType=VARCHAR}
+    	)
+    </delete>
+    
+    <delete id="addressDelete" parameterType="address">
+        DELETE FROM w_address WHERE addr_num = #{addrNum}
+    </delete>
+    
+    <update id="addressUpdate">
+    UPDATE w_address
+        SET
+            recipient = #{avo.recipient},
+            tel = #{avo.tel},
+            zipcode = #{avo.zipcode},
+            addr = #{avo.addr},
+            addr_detail = #{avo.addrDetail},
+            user_num=#{userNum},
+            req=#{avo.req}
+        WHERE addr_num = #{avo.addrNum}
+    </update>
+    
+</mapper>

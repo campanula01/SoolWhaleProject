@@ -1,0 +1,51 @@
+.liquor .slider_div1{
+	width: 300px;
+	height: 400px;
+	border-radius: 10px;
+	border: 1px solid  #e0e0e0;
+	margin-top: 30px;
+	
+
+	text-align: center;
+}
+
+.liquor .slider_div1 img{
+	width: 250px;
+	height: 300px;
+	margin-left:7% ;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	border-radius: 10px;
+
+}
+
+.liquor {
+    display: flex;           /* flexbox를 사용하여 요소들을 가로로 배열합니다. */
+    flex-wrap: wrap;         /* 요소들이 부모 요소의 너비를 초과하면 다음 줄로 넘어갑니다. */
+    gap: 16px;              /* 요소들 사이의 간격을 설정합니다. */
+width: 1500px;
+
+}
+
+
+
+/* 반응형 디자인: 화면 너비에 따라 요소의 수를 조절할 수 있습니다. */
+
+
+@media (max-width: 1000px) {
+    .slider_div1 {
+        width: calc(33.33% - 16px);  /* 화면 너비가 1000px 이하일 때 3개의 요소를 한 줄에 표시합니다. */
+    }
+}
+
+@media (max-width: 768px) {
+    .slider_div1 {
+        width: calc(50% - 16px);     /* 화면 너비가 768px 이하일 때 2개의 요소를 한 줄에 표시합니다. */
+    }
+}
+
+@media (max-width: 480px) {
+    .slider_div1 {
+        width: 100%;                /* 화면 너비가 480px 이하일 때 1개의 요소만 한 줄에 표시합니다. */
+    }
+}

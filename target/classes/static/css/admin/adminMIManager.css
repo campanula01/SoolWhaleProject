@@ -1,0 +1,31 @@
+.right_section{
+    width: 100%;
+}
+.site_q{
+    width: 100%;
+    text-align: center;
+    margin-top:180px;
+
+}
+
+.answer_table{
+    width: 80%;
+    border-collapse: collapse;
+    margin: 30px auto;
+    line-height: 35px;
+}
+
+table, th, td{
+    border:1px solid #999;
+    text-align: center;
+}
+
+th, td{
+height: 35px;
+
+}
+hr{
+    width: 80%;
+    border:1px solid  #888;
+    margin : 50px auto;
+}

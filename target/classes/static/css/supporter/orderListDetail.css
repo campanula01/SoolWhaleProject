@@ -1,0 +1,95 @@
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    list-style: none;
+}
+
+
+.orderListDetail_title{
+    margin-top:100px;
+    font-size: 25px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.order_num{
+    width: 100%;
+    height: 30px;
+    clear:both;
+    margin-bottom: 20px;
+}
+.order_dn{
+    display: inline-block;
+    width: 50%;
+    height: 30px;
+    line-height: 30px;
+}
+.order_number{
+    float: right;
+}
+.order_dn_t{
+    display: inline-block;
+    width: 60%;
+    text-align: center;
+    color:#999;
+}
+
+.order_date{
+    border-right:1px solid #ddd;
+}
+
+.order_table{
+    width: 95%;
+    margin: 10px auto;
+}
+table, th, td{
+    border:1px solid #999;
+    border-collapse:collapse;
+}
+
+.table_img{
+    display: inline-block;
+    width: 150px;
+    margin: 20px 15px; 
+    float: left;    
+}
+.table_pro{
+    display: inline-block;
+    width: 300px;
+    padding:30px 0;
+    margin-top:20px;    
+}
+.table_pro > p{
+    margin-top:20px;
+}
+
+
+
+/* 중간 부분 */
+
+.mid_title{
+    margin-top:70px;
+    font-size:20px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+  
+}
+
+.mid_mid_title{
+    font-size:16px;
+    color:#999;
+    margin: 20px 0;
+}
+.a{margin-right : 20px; }
+.b , .fa-solid{
+	display:inline-block;
+	
+	margin-right: 20px;}
+	
+	
+	.mid{
+		margin-bottom: 100px;
+	}

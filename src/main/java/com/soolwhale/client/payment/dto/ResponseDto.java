@@ -6,12 +6,12 @@ import lombok.Setter;
 @Setter
 @Getter
 public class ResponseDto {
-	
-	private int code;
-	private String message;
-	
-	private DataResponseMerchant response;
-	
-	
+   
+   private int code;
+   private String message;
+   
+   private DataResponseMerchant response;
+   
+   
 
 }
