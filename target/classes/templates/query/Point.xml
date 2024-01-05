@@ -62,4 +62,9 @@
 		WHERE wp.user_num = #{userNum}
 		ORDER BY point_date DESC
 	</select>
+	
+	<delete id="userPointDelete">
+		delete from user_point where user_num=#{userNum}
+	</delete>
+	
 </mapper>

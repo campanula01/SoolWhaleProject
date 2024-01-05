@@ -42,7 +42,7 @@
  				
  					$("#inqu_up_data").attr({
  						"method":"get",
- 						"action":"/member/questionUpdateform"
+ 						"action":"/SoolWhale/member/questionUpdateform"
  					});
  					$("#inqu_up_data").submit();
  					
@@ -53,7 +53,7 @@
  				if(confirm("정말로 삭제하시겟습니까?")){
  					$("#inqu_data").attr({
  						"method":"get",
- 						"action":"/member/questionDelete"
+ 						"action":"/SoolWhale/member/questionDelete"
  					});
  					
  					$("#inqu_data").submit();

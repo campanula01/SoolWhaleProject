@@ -69,7 +69,7 @@
 
  			        form.attr({
  			            "method": "get",
- 			            "action": "/member/questionInsert"
+ 			            "action": "/SoolWhale/member/questionInsert"
  			        });
 
  			        form.submit();

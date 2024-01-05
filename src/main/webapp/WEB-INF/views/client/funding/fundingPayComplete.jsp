@@ -146,7 +146,6 @@
         <c:forEach var="project" items="${recommendRewardList}" begin="0" end="5">
         <a href="/SoolWhale/project/fundingDetailView?projectNum=${project.projectNum}">
           <div class="slide">
-             ${project.title }
               <img src="/home/tomcat/file/project/${project.firstImgFilename}" alt="Image for ${project.title}" onclick="redirectToAnotherPage(this)" data-project-num="${project.projectNum}"/>
           </div>
           </a>

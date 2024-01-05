@@ -116,30 +116,13 @@ $(document).ready(function() {
 
 
 
-	function selectReward(selectedOption) {
-		const rewardOptions = document.querySelectorAll('.reward-option');
-		rewardOptions.forEach(option => {
-			option.classList.remove('selected');
-		});
 
-		selectedOption.classList.add('selected');
-
-		const rewardTitle = selectedOption.querySelector('h3').textContent;
-		const rewardPrice = selectedOption.querySelector('p').textContent;
-
-		const selectedRewardTitle = document.getElementById('selectedRewardTitle');
-		const selectedRewardPrice = document.getElementById('selectedRewardPrice');
-
-		selectedRewardTitle.textContent = rewardTitle;
-		selectedRewardPrice.textContent = rewardPrice;
-	}
 
 
 	$(".reward-option").click(function() {
 		let rewardValue = $(this).attr("data-reward");
 		const projectNum = $("#projectNum").val();
 		console.log(projectNum);
-		console.log()
 		window.location.href = `/SoolWhale/reward/rewardList?rewardValue=${rewardValue}&projectNum=${projectNum}`;
 	});
 	const totalPrice = $(".price").text();

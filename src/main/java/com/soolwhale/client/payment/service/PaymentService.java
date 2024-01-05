@@ -34,7 +34,7 @@ public interface PaymentService {
 	public PaymentVO paymentListDetailChoice(String merchantUid, UserVO user);
 	
 	
-
+	public List<PaymentVO> paymentAllList();
 	
 }
 

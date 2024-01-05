@@ -48,7 +48,7 @@
  					
  					$("#f_data").attr({
  						"method" : "post",
- 						"action" : "/member/userDelete"
+ 						"action" : "/SoolWhale/member/userDelete"
  						
  					});
  					
@@ -71,7 +71,7 @@
   			
 			 if(!chkData("#ex_pwd", "현재 비밀번호")) return;
 				$.ajax({
-					url : "/member/upPwdConfirm",
+					url : "/SoolWhale/member/upPwdConfirm",
 					type : "post",
 					data : $("#re_pwd_form").serialize(),
 					dataType : "text",
@@ -95,7 +95,7 @@
 									
 									$("#re_pwd_form").attr({
 										"method": "post",
-										"action": "/member/myInfoUpdate"
+										"action": "/SoolWhale/member/myInfoUpdate"
 									});
 									$("#re_pwd_form").submit();
 								 

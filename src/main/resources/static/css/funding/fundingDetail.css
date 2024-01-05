@@ -223,6 +223,7 @@ margin-top: auto;
 width: 300px;
 max-height: calc(100vh - 100px);
 overflow-y: auto;
+overflow-x: hidden;
 border: 1px solid #ccc;
 padding: 20px;
 position: fixed;
@@ -232,7 +233,13 @@ background-color: #fff;
 border-radius: 10px;
 box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 margin-right: 200px;
+
 }
+
+.reward-selection::-webkit-scrollbar {
+  display: none;
+}
+
 
 .detail .reward-options {
 display: flex;

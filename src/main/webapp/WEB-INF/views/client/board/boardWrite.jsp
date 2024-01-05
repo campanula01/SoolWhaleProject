@@ -263,7 +263,7 @@ input[type=text]:focus, textarea:focus {
 				$("#f_writeForm").attr({
 					"method" : "post",
 					"enctype" : "multipart/form-data",
-					"action" : "/board/write"
+					"action" : "/SoolWhale/board/write"
 				});
 				$("#f_writeForm").submit();
 			}

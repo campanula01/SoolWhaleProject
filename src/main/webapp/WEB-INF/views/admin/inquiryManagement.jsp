@@ -14,7 +14,7 @@
 	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-<title>관리자 MAIN</title>
+<title>문의 관리</title>
 
 <script src="/SoolWhale/resources/js/common/jquery-3.7.0.min.js"></script>
 <script src="/SoolWhale/resources/js/common/jquery-1.12.4.min.js"></script>
@@ -212,25 +212,25 @@ width: 90%}
 				</a>
 				<hr>
 				<ul class="nav nav-pills flex-column mb-auto">
-					<li class="nav-item"><a href="/admin/main" class="nav-link active"
+					<li class="nav-item"><a href="/SoolWhale/admin/main" class="nav-link active"
 						aria-current="page" id="adminMain"> <svg
 								class="bi pe-none me-2" width="16" height="16">
 								<use xlink:href="#home" /></svg> Main
 					</a></li>
-					<li><a href="#" class="nav-link text-white"> <svg
+					<li><a href="/SoolWhale/admin/userManagement" class="nav-link text-white"> <svg
 								class="bi pe-none me-2" width="16" height="16">
 								<use xlink:href="#people-circle" /></svg> 회원관리
 					</a></li>
-					<li><a href="#" class="nav-link text-white"> <svg
+					<li><a href="/SoolWhale/admin/paymentManagement" class="nav-link text-white"> <svg
 								class="bi pe-none me-2" width="16" height="16">
 								<use xlink:href="#speedometer2" /></svg> 결제내역관리
 					</a></li>
-					<li><a href="/admin/projectManagement"
+					<li><a href="/SoolWhale/admin/projectManagement"
 						class="nav-link text-white"> <svg class="bi pe-none me-2"
 								width="16" height="16">
 								<use xlink:href="#table" /></svg> 판매자 프로젝트
 					</a></li>
-					<li><a href="/admin/inquiryListManagement" class="nav-link text-white"> <svg
+					<li><a href="/SoolWhale/admin/inquiryListManagement" class="nav-link text-white"> <svg
 								class="bi pe-none me-2" width="16" height="16">
 								<use xlink:href="#grid" /></svg> 문의 관리
 					</a></li>

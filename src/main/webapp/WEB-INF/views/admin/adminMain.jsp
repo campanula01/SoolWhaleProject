@@ -13,7 +13,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 		
-		<title>관리자 MAIN</title>
+		<title>관리자 페이지</title>
 		
 	    <script src="/SoolWhale/resources/js/common/jquery-3.7.0.min.js"></script>
   		<script src="/SoolWhale/resources/js/common/jquery-1.12.4.min.js"></script>
@@ -174,10 +174,6 @@
  				console.log("내 프로젝트 페이지 호출")
  				location.href="/SoolWhale/project/projectList";
  			})
- 			$("#maker_li2").click(function(){
- 				console.log("판매현황 페이지 호출")
- 				location.href="/SoolWhale/project/projectSellingList";
- 			})
  			
  			$("#logout").click(function() {
  				location.href = "/SoolWhale/admin/logout"
@@ -207,25 +203,25 @@
         </a>
       </li>
        <li>
-        <a href="#" class="nav-link text-white">
+        <a href="/SoolWhale/admin/userManagement" class="nav-link text-white">
           <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#people-circle"/></svg>
           회원관리
         </a>
       </li>
       <li>
-        <a href="#" class="nav-link text-white">
+        <a href="/SoolWhale/admin/paymentManagement" class="nav-link text-white">
           <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#speedometer2"/></svg>
           결제내역관리
         </a>
       </li>
       <li>
-        <a href="/admin/projectManagement" class="nav-link text-white">
+        <a href="/SoolWhale/admin/projectManagement" class="nav-link text-white">
           <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#table"/></svg>
           판매자 프로젝트
         </a>
       </li>
       <li>
-        <a href="/admin/inquiryListManagement" class="nav-link text-white">
+        <a href="/SoolWhale/admin/inquiryListManagement" class="nav-link text-white">
           <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#grid"/></svg>
           문의 관리
         </a>

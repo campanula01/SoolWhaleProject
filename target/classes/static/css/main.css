@@ -100,6 +100,11 @@
     z-index: 0; /* 슬라이드 요소 위로 */
 }
 
+
+.project_slider {
+    height: 430px;
+}
+
 .slider_div {
     position: relative;
     background-color: #fff;
@@ -126,6 +131,8 @@
     word-break: break-all;
     font-weight: bold;
 }
+
+
 
 .product-price {
     padding-bottom: 10px;

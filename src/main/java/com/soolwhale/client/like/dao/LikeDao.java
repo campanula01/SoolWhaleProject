@@ -23,4 +23,6 @@ public interface LikeDao {
 	public int likeInsert(String projectNum, String userNum);
 	public int likeDelete(String projectNum, String userNum) ;
 	public int likeStatus(String projectNum, String userNum);
+	
+	public void userLikeDelete(String userNum);
 }

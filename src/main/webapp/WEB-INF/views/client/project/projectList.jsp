@@ -88,7 +88,7 @@
 											<c:if test="${project.sts ne '진행중'}">
 												<a href="/SoolWhale/project/preview?projectNum=${project.projectNum}">
 													<c:if test="${not empty project.firstImgFilename}">
-														<img src="/SoolWhale/resources/img/project/uploadStorage/project/${project.firstImgFilename}" class="project_thumbnail_image" />
+														<img src="/home/tomcat/file/project/${project.firstImgFilename}" class="project_thumbnail_image" />
 													</c:if>
 													<c:if test="${empty project.firstImgFilename}">
 														<img src="/SoolWhale/resources/img/common/logo.png" />
@@ -96,9 +96,9 @@
 												</a>
 											</c:if>
 											<c:if test="${project.sts eq '진행중'}">
-												<a href="/project/fundingDetailView?projectNum=${project.projectNum}">
+												<a href="/SoolWhale/project/fundingDetailView?projectNum=${project.projectNum}">
 													<c:if test="${not empty project.firstImgFilename}">
-														<img src="/SoolWhale/resources/img/project/uploadStorage/project/${project.firstImgFilename}" class="project_thumbnail_image" />
+														<img src="/home/tomcat/file/project/${project.firstImgFilename}" class="project_thumbnail_image" />
 													</c:if>
 													<c:if test="${empty project.firstImgFilename}">
 														<img src="/SoolWhale/resources/img/common/logo.png" />
@@ -111,25 +111,27 @@
 												<span>${project.sts}</span>
 											</p>
 											<c:if test="${project.sts ne '진행중'}">
-												<a href="/project/preview?projectNum=${project.projectNum}">
+												<a href="/SoolWhale/project/preview?projectNum=${project.projectNum}">
 													<p class="project_thumbnail_title">${project.title}</p>
 													<p class="project_thumbnail_content">${project.projectDesc}</p>
 												</a>
 											</c:if>
 											<c:if test="${project.sts eq '진행중'}">
-												<a href="/project/fundingDetailView?projectNum=${project.projectNum}">
+												<a href="/SoolWhale/project/fundingDetailView?projectNum=${project.projectNum}">
 													<p class="project_thumbnail_title">${project.title}</p>
 													<p class="project_thumbnail_content">${project.projectDesc}</p>
 												</a>
 											</c:if>
 										</div>
 										<div class="project_controll">
+										<c:if test="${project.sts ne '진행중'}">
 											<div class="projectUpdate">
 												<button type="button" class="projectUpdateBtn" data-project-num="${project.projectNum}">수정</button>
 											</div>
 											<div class="projectDelete">
 												<button type="button" class="projectDeleteBtn" data-project-num="${project.projectNum}">삭제</button>
 											</div>
+											</c:if>
 										</div>
 									</div>
 								</c:if>

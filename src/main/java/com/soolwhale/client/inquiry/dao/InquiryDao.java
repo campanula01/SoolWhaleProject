@@ -23,4 +23,6 @@ public interface InquiryDao {
 	
 	
 	public List<InquiryVO> inquiryListManagement();
+	
+	public void userInquiryDelete(String userNum);
 }

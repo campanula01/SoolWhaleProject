@@ -67,4 +67,9 @@
 		SELECT * from
 		w_inquiry
 	</select>
+	
+		<delete id="userInquiryDelete">
+		delete from w_inquiry where user_num=#{userNum}
+	</delete>
+	
 </mapper>

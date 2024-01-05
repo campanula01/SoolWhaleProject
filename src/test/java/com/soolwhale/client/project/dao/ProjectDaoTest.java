@@ -17,17 +17,17 @@ import lombok.extern.slf4j.Slf4j;
 public class ProjectDaoTest {
 	@Setter(onMethod_ = @Autowired)
 	private ProjectDao projectDao;
-/*
+
 	@Test
 	public void projectListTest() {
 	
-		List<ProjectVO> list = projectDao.projectList();
+		List<ProjectVO> list = projectDao.projectListAll();
 		for(ProjectVO li:list) {
 			log.info(li.toString());
 		}
 	}
 	
-	*/
+
 	/*
 	@Test
 	public void recommendList() {
@@ -38,7 +38,7 @@ public class ProjectDaoTest {
 		
 	}
 	*/
-	
+	/*
 	@Test
 	public void executeTimestamp() {
 		String projectNum ="2310220915462660";
@@ -46,5 +46,17 @@ public class ProjectDaoTest {
 		Timestamp time= projectDao.paymentDate(projectNum);
 		
 		log.info("시간"+time);
+	}
+	*/
+	@Test
+	public void projectCount() {
+		String userNum ="U202309222022013";
+		
+		try {
+		    Integer i = projectDao.checkProjectStatus(userNum);
+		    log.info("개수" + i);
+		} catch (Exception e) {
+		    log.error("예외 발생: " + e.getMessage(), e);
+		}
 	}
 }

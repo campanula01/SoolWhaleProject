@@ -11,10 +11,9 @@ import com.soolwhale.client.user.vo.UserVO;
 public interface UserDao {
 
 	
-	
+	public List<UserVO> userList();
 	
 	public UserVO loginProcess(UserVO login);
-	public List<UserVO> UserList();
 	public int joinProcess(UserVO join);
 	public int checkPhone(String phoneNumber);
     int checkId(String id);
@@ -23,11 +22,17 @@ public interface UserDao {
 	public int rePwdConfirm(UserVO pass);
 	public UserVO myInfoPage(UserVO uvo);
 	public int userDelete(UserVO uvo) ;
+	
+	public void userCompleteDelete(String userNum);
 	public int myInfoUpdate(UserVO uvo);
 	public int upPwdConfirm(UserVO pass);
 	
 	public UserVO userData(String userNum);
 
      int joinPoint(PointVO pointVO);
+     
+ 	public int editProcess(UserVO user);
+     
+
 }
 

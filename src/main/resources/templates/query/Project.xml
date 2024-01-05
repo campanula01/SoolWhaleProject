@@ -3,165 +3,201 @@
 <mapper namespace="com.soolwhale.client.project.dao.ProjectDao">
 
 	<resultMap type="project" id="projectResultMap">
-    	<result column="PROJECT_NUM" property="projectNum"/>
-    	<result column="TITLE" property="title"/>
-    	<result column="W_DESC" property="projectDesc"/>
-    	<result column="FIRST_IMG_FILENAME" property="firstImgFilename"/>
-    	<result column="FIRST_VIDEO" property="firstVideo"/>
-    	<result column="TARGET_AMOUNT" property="targetAmount"/>
-    	<result column="START_DATE" property="startDate"/>
-    	<result column="END_DATE" property="endDate"/>
-    	<result column="PAY_DATE" property="payDate"/>
-    	<result column="execute_Timestamp" property="executeTimestamp"/>
-    	<result column="REMAIN_DATE" property="remainDate"/>
-    	<result column="STS" property="sts"/>
-    	<result column="CREATE_DATE" property="createDate"/>
-    	<result column="LIQUOR_TYPE" property="liquorType"/>
-    	<result column="P_MODIFY_DATE" property="pModifyDate"/>
-    	<result column="MAKER_NAME" property="makerName"/>
-    	<result column="MAKER_DESC" property="makerDesc"/>
-    	<result column="USER_NUM" property="userNum"/>
-    	<result column="PROFIL_IMG_FILENAME" property="profilImgFilename"/>
-    	<collection property="images" column="PROJECT_NUM" ofType="image" javaType="java.util.ArrayList" select="com.soolwhale.client.image.dao.ImageDao.imageList"></collection>
+		<result column="PROJECT_NUM" property="projectNum" />
+		<result column="TITLE" property="title" />
+		<result column="W_DESC" property="projectDesc" />
+		<result column="FIRST_IMG_FILENAME" property="firstImgFilename" />
+		<result column="FIRST_VIDEO" property="firstVideo" />
+		<result column="TARGET_AMOUNT" property="targetAmount" />
+		<result column="START_DATE" property="startDate" />
+		<result column="END_DATE" property="endDate" />
+		<result column="PAY_DATE" property="payDate" />
+		<result column="execute_Timestamp" property="executeTimestamp" />
+		<result column="REMAIN_DATE" property="remainDate" />
+		<result column="STS" property="sts" />
+		<result column="CREATE_DATE" property="createDate" />
+		<result column="LIQUOR_TYPE" property="liquorType" />
+		<result column="P_MODIFY_DATE" property="pModifyDate" />
+		<result column="MAKER_NAME" property="makerName" />
+		<result column="MAKER_DESC" property="makerDesc" />
+		<result column="USER_NUM" property="userNum" />
+		<result column="PROFIL_IMG_FILENAME"
+			property="profilImgFilename" />
+		<collection property="images" column="PROJECT_NUM"
+			ofType="image" javaType="java.util.ArrayList"
+			select="com.soolwhale.client.image.dao.ImageDao.imageList"></collection>
 	</resultMap>
-	<!-- <select id="projectList" parameterType="project" resultMap="projectResultMap">
-		select PROJECT_NUM, TITLE, W_DESC, FIRST_IMG_FILENAME, STS, LIQUOR_TYPE, profil_img_filename
-		from w_project
-	</select> -->
-	
-	
+	<!-- <select id="projectList" parameterType="project" resultMap="projectResultMap"> 
+		select PROJECT_NUM, TITLE, W_DESC, FIRST_IMG_FILENAME, STS, LIQUOR_TYPE, 
+		profil_img_filename from w_project </select> -->
+
+
 	<select id="projectListAll" resultMap="projectResultMap">
-		SELECT PROJECT_NUM,TITLE,W_DESC,FIRST_IMG_FILENAME,TARGET_AMOUNT,to_char(START_DATE,'yyyy-mm-dd') as START_DATE,to_char(END_DATE,'yyyy-mm-dd')as END_DATE,
+		SELECT
+		PROJECT_NUM,TITLE,W_DESC,FIRST_IMG_FILENAME,TARGET_AMOUNT,to_char(START_DATE,'yyyy-mm-dd')
+		as START_DATE,to_char(END_DATE,'yyyy-mm-dd')as END_DATE,
 		STS,CREATE_DATE,LIQUOR_TYPE,P_MODIFY_DATE,MAKER_NAME,USER_NUM,PROFIL_IMG_FILENAME
 		from W_PROJECT
 	</select>
-	<!-- 
-	<select id="projectListAll" resultMap="projectResultMap">
-		SELECT * from W_PROJECT
+	<!-- <select id="projectListAll" resultMap="projectResultMap"> SELECT * 
+		from W_PROJECT </select> -->
+
+	<select id="projectList" parameterType="project"
+		resultMap="projectResultMap">
+		select PROJECT_NUM, TITLE, W_DESC, FIRST_IMG_FILENAME, STS,
+		LIQUOR_TYPE, profil_img_filename, USER_NUM
+		from w_project WHERE
+		USER_NUM = #{userNum}
+		<if test="sts != null and sts != ''">and sts=#{sts}</if>
 	</select>
-	 -->
-	
-	<select id="projectList" parameterType="project" resultMap="projectResultMap">
-		select PROJECT_NUM, TITLE, W_DESC, FIRST_IMG_FILENAME, STS, LIQUOR_TYPE, profil_img_filename, USER_NUM
-		from w_project WHERE USER_NUM = #{userNum} <if test="sts != null and sts != ''">and sts=#{sts}</if>
-	</select>
-	
+
 	<insert id="projectInfoInsert" parameterType="project">
-		insert into w_project(project_num, sts, create_date, user_num,
-			liquor_type, title, w_desc, FIRST_IMG_FILENAME)
-		values(#{projectNum}, default, default, #{userNum},
-			#{liquorType}, #{title}, #{projectDesc}, #{firstImgFilename})
+		insert into
+		w_project(project_num, sts, create_date, user_num,
+		liquor_type, title, w_desc, FIRST_IMG_FILENAME)
+		values(#{projectNum}, default,
+		default, #{userNum},
+		#{liquorType}, #{title}, #{projectDesc}, #{firstImgFilename})
 	</insert>
-	
+
 	<update id="makerInfoUpdate" parameterType="project">
 		update w_project
-		set liquor_type = #{liquorType},
-			title = #{title},
-            w_desc = #{projectDesc},
-			FIRST_IMG_FILENAME = #{firstImgFilename}
-	 	WHERE project_num = #{projectNum}
+		set
+		liquor_type = #{liquorType},
+		title = #{title},
+		w_desc = #{projectDesc},
+		FIRST_IMG_FILENAME = #{firstImgFilename}
+		WHERE project_num = #{projectNum}
 	</update>
-	
+
 	<update id="projectInfoUpdate" parameterType="project">
 		update w_project
 		set maker_name = #{makerName},
-			profil_img_filename = #{profilImgFilename},
-			maker_desc = #{makerDesc}
-	 	WHERE project_num = #{projectNum}
+		profil_img_filename = #{profilImgFilename},
+		maker_desc = #{makerDesc}
+		WHERE project_num = #{projectNum}
 	</update>
-	
+
 	<update id="fundingPlanUpdate" parameterType="project">
 		update w_project
 		set target_amount = #{targetAmount},
-			start_date = #{startDate},
-			end_date = #{endDate}
-	 	WHERE project_num = #{projectNum}
-	</update>
-	
-	<select id="recommendRewardList" parameterType="project" resultMap="projectResultMap">
-		SELECT project_num,FIRST_IMG_FILENAME, title from w_project order by project_num desc
-	</select>
-	<select id="paymentDate" >
-		SELECT end_date+1 as execute_Timestamp from w_project where project_num = #{projectNum,jdbcType=VARCHAR}
-		
-	</select>
-	
-	<select id="projectDetail2" parameterType="project" resultType="project" resultMap="projectResultMap">
-		select * from w_project where project_num=#{projectNum}
-	</select>
-	
-	<select id="projectDetail" parameterType="project" resultType="project" resultMap="projectResultMap">
-	SELECT 
-    project_num,
-    title,
-    w_desc,
-    first_img_filename,
-    first_video,
-    target_amount,
-    TO_CHAR(start_date, 'YYYY"년" MM"월" DD"일"') AS start_date,
-    TO_CHAR(end_date, 'YYYY"년" MM"월" DD"일"') AS end_date,
-    TO_CHAR(end_date+1, 'YYYY"년" MM"월" DD"일"') AS pay_date,
-    TO_CHAR(TRUNC(end_date-sysdate)) AS remain_date,
-    sts,
-    TO_CHAR(create_date, 'YYYY"년" MM"월" DD"일"') AS create_date,
-    liquor_type,
-    TO_CHAR(p_modify_date, 'YYYY"년" MM"월" DD"일"') AS p_modify_date,
-    maker_name,
-    maker_desc,
-    user_num, 
-    profil_img_filename
-    
-
-FROM 
-    w_project 
-WHERE 
-    project_num=#{projectNum}
-	</select>
-	
-	
-		<select id="searchProjects"  parameterType="project" resultMap="projectResultMap">
-	  SELECT  PROJECT_NUM, TITLE, W_DESC, FIRST_IMG_FILENAME,
-				FIRST_VIDEO, TARGET_AMOUNT, START_DATE, END_DATE, STS,
-				CREATE_DATE, LIQUOR_TYPE, P_MODIFY_DATE, MAKER_NAME, MAKER_DESC,
-				PROFIL_IMG_FILENAME
-	   FROM W_PROJECT WHERE title LIKE '%' || #{title} || '%'
-	</select>
-	
-	<update id="successInsert" parameterType="project">
-		update w_project
-		set P_MODIFY_DATE = default, sts = '심사중'
+		start_date = #{startDate},
+		end_date = #{endDate}
 		WHERE project_num = #{projectNum}
 	</update>
-	
-	<delete id="deleteProject" parameterType="project">
-    	DELETE FROM w_project WHERE project_num = #{projectNum}
-	</delete>
-	
-	<select id="insertProjectNum" resultType="String">
-		SELECT to_char(systimestamp, 'yy'||'mm'||'dd'||'hh24'||'mi'||'ss'||'ff4') from dual
+
+	<select id="recommendRewardList" parameterType="project"
+		resultMap="projectResultMap">
+		SELECT project_num,FIRST_IMG_FILENAME, title from w_project
+		order by project_num desc
 	</select>
-	
+	<select id="paymentDate">
+		SELECT end_date+1 as execute_Timestamp
+		from w_project where project_num = #{projectNum,jdbcType=VARCHAR}
+
+	</select>
+
+	<select id="projectDetail2" parameterType="project"
+		resultType="project" resultMap="projectResultMap">
+		select * from w_project where
+		project_num=#{projectNum}
+	</select>
+
+	<select id="projectDetail" parameterType="project"
+		resultType="project" resultMap="projectResultMap">
+		SELECT
+		project_num,
+		title,
+		w_desc,
+		first_img_filename,
+		first_video,
+		target_amount,
+		TO_CHAR(start_date, 'YYYY"년" MM"월" DD"일"') AS start_date,
+		TO_CHAR(end_date, 'YYYY"년" MM"월" DD"일"') AS end_date,
+		TO_CHAR(end_date+1, 'YYYY"년" MM"월" DD"일"') AS pay_date,
+		TO_CHAR(TRUNC(end_date-sysdate)) AS remain_date,
+		sts,
+		TO_CHAR(create_date, 'YYYY"년" MM"월" DD"일"') AS create_date,
+		liquor_type,
+		TO_CHAR(p_modify_date, 'YYYY"년" MM"월" DD"일"') AS p_modify_date,
+		maker_name,
+		maker_desc,
+		user_num,
+		profil_img_filename
+
+
+		FROM
+		w_project
+		WHERE
+		project_num=#{projectNum}
+	</select>
+
+
+	<select id="searchProjects" parameterType="project"
+		resultMap="projectResultMap">
+		SELECT PROJECT_NUM, TITLE, W_DESC, FIRST_IMG_FILENAME,
+		FIRST_VIDEO, TARGET_AMOUNT, START_DATE, END_DATE, STS,
+		CREATE_DATE, LIQUOR_TYPE, P_MODIFY_DATE, MAKER_NAME, MAKER_DESC,
+		PROFIL_IMG_FILENAME
+		FROM W_PROJECT WHERE title LIKE '%' || #{title} || '%'
+	</select>
+
+	<update id="successInsert" parameterType="project">
+		update w_project
+		set
+		P_MODIFY_DATE = default, sts = '심사중'
+		WHERE project_num = #{projectNum}
+	</update>
+
+	<delete id="deleteProject" parameterType="project">
+		DELETE FROM w_project WHERE project_num = #{projectNum}
+	</delete>
+
+	<select id="insertProjectNum" resultType="String">
+		SELECT
+		to_char(systimestamp, 'yy'||'mm'||'dd'||'hh24'||'mi'||'ss'||'ff4')
+		from dual
+	</select>
+
 	<update id="projectAccept" parameterType="project">
 		update w_project
-		set sts='승인'
+		set
+		sts='승인'
 		WHERE PROJECT_NUM=#{projectNum}
 	</update>
-	
+
 	<update id="projectRefuse" parameterType="project">
 		update w_project
-		set sts='반려'
+		set
+		sts='반려'
 		WHERE PROJECT_NUM=#{projectNum}
 	</update>
-	
-	<select id="projectSellingList" parameterType="project" resultMap="projectResultMap">
-		SELECT PROJECT_NUM, TITLE, W_DESC, FIRST_IMG_FILENAME, STS, LIQUOR_TYPE, USER_NUM, TARGET_AMOUNT
+
+	<select id="projectSellingList" parameterType="project"
+		resultMap="projectResultMap">
+		SELECT PROJECT_NUM, TITLE, W_DESC, FIRST_IMG_FILENAME, STS,
+		LIQUOR_TYPE, USER_NUM, TARGET_AMOUNT
 		FROM w_project
-		WHERE USER_NUM = #{userNum} AND (STS = '진행중' OR STS = '종료')
+		WHERE USER_NUM =
+		#{userNum} AND (STS = '진행중' OR STS = '종료')
 	</select>
-	
-		<select id="liquorList" parameterType="project" resultMap="projectResultMap">
-	select PROJECT_NUM, TITLE, W_DESC, FIRST_IMG_FILENAME, STS, LIQUOR_TYPE, profil_img_filename
-		from w_project WHERE  LIQUOR_TYPE = #{liquorType, jdbcType=VARCHAR}
+
+	<select id="liquorList" parameterType="project"
+		resultMap="projectResultMap">
+		select PROJECT_NUM, TITLE, W_DESC, FIRST_IMG_FILENAME, STS, LIQUOR_TYPE,
+		profil_img_filename
+		from w_project WHERE LIQUOR_TYPE = #{liquorType,
+		jdbcType=VARCHAR}and sts='진행중'
 	</select>
-	
+
+	<delete id="userProjectDelete">
+		delete from w_project where user_num=#{userNum}
+	</delete>
+
+	<select id="checkProjectStatus" resultType="java.lang.Integer">
+		SELECT COUNT(*)
+		FROM w_project
+		WHERE sts != '종료' AND user_num =#{userNum}
+	</select>
+
 </mapper>

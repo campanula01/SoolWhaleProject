@@ -47,8 +47,8 @@
                 description: projectDesc1,
                 imageUrl: projectImg1,
                 link: {
-                    mobileWebUrl: 'https://developers.kakao.com/docs/js/kakaotalklink#텍스트-템플릿-보내기',
-                    webUrl: 'http://13.124.185.70:8080/SoolWhale/project/fundingDetailView?projectNum=' + projectNum1
+                    mobileWebUrl: 'https://soolwhale.store/SoolWhale/project/fundingDetailView?projectNum=' + projectNum1,
+                    webUrl: 'https://soolwhale.store/SoolWhale/project/fundingDetailView?projectNum=' + projectNum1
                 }
             },
         });
@@ -160,10 +160,11 @@
                 <img src="/home/tomcat/file/project/${projectDetail.firstImgFilename}" alt="">
             <h2>${projectDetail.makerName }</h2>
         </div>
-        ${projectDetail.makerDesc }
+
     </div>
+            ${projectDetail.makerDesc }
     <br>
-    
+        <br>
     <div class="reward-options">
 
         

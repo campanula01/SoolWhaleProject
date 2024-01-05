@@ -119,13 +119,16 @@ public class UserController {
 		return "ok";
 	}
 
+
 	@RequestMapping("/logout")
 	public String logout(HttpSession session) {
-		log.info("admin 로그인 아웃 처리");
-		session.invalidate();
-		return "redirect:/";
+	    log.info("admin 로그인 아웃 처리");
+	    session.invalidate(); // 세션을 무효화
 
+	    // 로그아웃 후 세션을 확인하여 특정 URL로 이동
+	    return "redirect:/";
 	}
+
 
 	@GetMapping("/join")
 	public String userJoinForm(Model model) {

@@ -414,7 +414,7 @@ $(function() {
 
 			let usablePoint = parseInt($("#usable_point").text().replace(/\D/g, ""), 10);
 			let pointDiscount = parseInt($(".point_discount").text(), 10);
-			let pointPlus = ($(".reward_value_final_money").text() * 1) / 100;
+			let pointPlus = Math.floor(($(".reward_value_final_money").text() * 1) / 100);
 
 			let pointPlusData = {
 				pointSum: usablePoint + pointPlus

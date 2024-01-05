@@ -83,7 +83,7 @@
 								<div class="product-slide">
 									<!-- 이미지 -->
 									<img
-										src="/SoolWhale/resources/img/project/uploadStorage/project/${projectDetail.firstImgFilename}"
+										src="/home/tomcat/file/project/${projectDetail.firstImgFilename}"
 										alt="">
 								</div>
 							</div>
@@ -119,7 +119,7 @@
 							<c:forEach var="image" items="${imageListProject}">
 
 								<img
-									src="/SoolWhale/resources/img/project/detailImageStorage/multiple/${image.imgFilename}"
+									src="/home/tomcat/file/multiple/${image.imgFilename}"
 									alt="">
 							</c:forEach>
 						</div>
@@ -130,7 +130,7 @@
 						<div class="profile-container">
 							<div class="profile-image">
 								<img
-									src="/SoolWhale/resources/img/project/uploadStorage/project/${projectDetail.firstImgFilename}"
+									src="/home/tomcat/file/project/${projectDetail.firstImgFilename}"
 									alt="">
 								<h2>${projectDetail.makerName }</h2>
 							</div>

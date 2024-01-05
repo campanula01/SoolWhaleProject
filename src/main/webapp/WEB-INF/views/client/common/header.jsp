@@ -20,9 +20,13 @@
          location.href = "/SoolWhale/member/login"
       });
       $("#logOutBtn").click(function() {
-         location.href = "/SoolWhale/member/logout"
-      });
-      
+    	    // 세션을 무효화하고 로그아웃 처리
+    	    $.get("/SoolWhale/member/logout", function() {
+    	        // 로그아웃 후 페이지를 새로고침
+    	        location.href = "/SoolWhale";
+    	    });
+    	});
+
       $("#btn_search").click(function() {      
           if (!chkData("#search_text", "검색어를")) {
               $("#btn_search").focus();

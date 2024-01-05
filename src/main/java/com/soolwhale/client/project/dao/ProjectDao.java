@@ -36,4 +36,8 @@ public interface ProjectDao {
 	
 	public List<ProjectVO> projectSellingList(ProjectVO pvo);
 	public List<ProjectVO> liquorList(ProjectVO pvo);
+	
+	public void userProjectDelete(String userNum);
+	
+ 	public Integer checkProjectStatus(String userNum);
 }

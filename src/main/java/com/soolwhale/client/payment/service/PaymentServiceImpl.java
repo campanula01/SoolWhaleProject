@@ -148,9 +148,11 @@ public class PaymentServiceImpl implements PaymentService {
 	            response = restTemplate.postForEntity(authUrl, entity, Map.class);
 	        } catch (HttpClientErrorException | HttpServerErrorException e) {
 	            // 요청 실패 처리
-	            System.out.println("IAMPORT token request failed: " + e.getResponseBodyAsString());
+	            System.err.println("IAMPORT token request failed: " + e.getRawStatusCode() + " - " + e.getStatusText());
+	            System.err.println("Response body: " + e.getResponseBodyAsString());
 	            return null;
 	        }
+
 
 	        if (response.getStatusCode() == HttpStatus.OK) {
 	            Map<String, Object> responseBody = response.getBody();
@@ -278,6 +280,10 @@ public class PaymentServiceImpl implements PaymentService {
 	        
 	        // 응답 파싱 responseDto 사용
 	        ObjectMapper objectMapper = new ObjectMapper();
+	        
+	        //Java 객체를 JSON으로 변환하기 (직렬화):writeValueAsString
+	        //Json을 java객체로 (역직렬화): readValue
+	        //code, message, response
 	        ResponseDto ResponseDto = objectMapper.readValue(response.getBody(), ResponseDto.class);
 	        System.out.println("<=============================================>");
 	        //ResponseDto를 확인
@@ -293,6 +299,9 @@ public class PaymentServiceImpl implements PaymentService {
 	        if (response.getStatusCode() == HttpStatus.OK) {
 	        	log.info("구매이 제대로 작동");
 	        	
+	        	//키(Key)와 값(Value)의 쌍으로 데이터 저장: 각 항목은 키와 값의 쌍으로 저장되며, 키는 고유해야 합니다.
+
+//순서가 보장되지 않음: HashMap에 데이터를 추가할 때 순서가 보장되지 않습니다. 순서를 보장하고 싶다면 LinkedHashMap을 사용해야 합니다.
 	        	Map<String, String> responseBody = new HashMap<>();
 	            responseBody.put("message", "Billing by key was successful");
 	            responseBody.put("merchant_uid", merchant_uid);
@@ -340,6 +349,15 @@ public class PaymentServiceImpl implements PaymentService {
 	public Timestamp paymentDate(String merchantUid) {
 		Timestamp timestamp =paymentDao.paymentDate(merchantUid);
 		return timestamp;
+	}
+
+
+
+	@Override
+	public List<PaymentVO> paymentAllList() {
+		List<PaymentVO> list = null;
+		list = paymentDao.paymentAllList();
+		return list;
 	}
 
 	

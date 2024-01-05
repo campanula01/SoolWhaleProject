@@ -27,7 +27,7 @@
 		    } else {
 		        $("#ManagerLoginForm").attr({
 		            "method" : "post",
-		            "action" : "/admin/login"
+		            "action" : "/SoolWhale/admin/login"
 		        });
 		        $("#ManagerLoginForm").submit();
 		    }

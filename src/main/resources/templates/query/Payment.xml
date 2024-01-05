@@ -160,6 +160,21 @@ GROUP BY
 		order by payment_date desc
 </select> 
 
+ <select id="paymentAllList" parameterType="payment" resultMap="paymentResultMap">
+   SELECT distinct pay.merchant_uid,
+       	pay.project_num AS project_num,
+       	proj.title AS title,
+       	pay.payment_date AS payment_date,
+       	pay.billing_key,
+       	pay.status as status,
+       	proj.sts as sts,
+       	pay.user_num AS user_num,
+        pay.delivery_YN
+		FROM w_payment pay
+		JOIN w_project proj ON pay.project_num = proj.project_num
+		order by project_num desc
+</select> 
+
 
 		<select id="paymentListDetail" parameterType="payment" resultMap="paymentResultMap">
     SELECT
@@ -238,5 +253,10 @@ AND wp.merchant_uid = #{merchantUid, jdbcType=VARCHAR}
 		#{userNum
 		,jdbcType=VARCHAR}
 	</select>
+	
+		<delete id="userPaymentDelete">
+		delete from w_payment where user_num=#{userNum}
+	</delete>
+	
 
 </mapper>

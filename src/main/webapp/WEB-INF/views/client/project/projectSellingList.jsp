@@ -58,9 +58,9 @@
 					<p class="maker_p smp">메이커</p>
 					<ul class="maker_ul">
 						<li class="maker_li1 li_style" id="maker_li1"><a
-							href="/project/projectList">내 프로젝트</a></li>
+							href="/SoolWhale/project/projectList">내 프로젝트</a></li>
 						<li class="maker_li2 li_style" id="maker_li2"><a
-							href="/project/projectSellingList">판매현황</a></li>
+							href="/SoolWhale/project/projectSellingList">판매현황</a></li>
 					</ul>
 				</div>
 
@@ -92,10 +92,10 @@
 												type="hidden" name="userNum" value="${project.userNum}">
 										</form>
 										<div class="thumbnail_image">
-											<a href="/project/fundingDetailView?projectNum=${project.projectNum}">
+											<a href="/SoolWhale/project/fundingDetailView?projectNum=${project.projectNum}">
 												<c:if test="${not empty project.firstImgFilename}">
 													<img
-														src="/SoolWhale/resources/img/project/uploadStorage/project/${project.firstImgFilename}"
+														src="/home/tomcat/file/project/${project.firstImgFilename}"
 														class="project_thumbnail_image" />
 												</c:if> <c:if test="${empty project.firstImgFilename}">
 													<img src="/SoolWhale/resources/img/common/logo.png" />
@@ -106,7 +106,7 @@
 											<p class="project_thumbnail_status">
 												<span>${project.sts}</span>
 											</p>
-											<a href="/project/fundingDetailView?projectNum=${project.projectNum}">
+											<a href="/SoolWhale/project/fundingDetailView?projectNum=${project.projectNum}">
 												<p class="project_thumbnail_title">${project.title}</p>
 											</a>
 											<c:forEach var="amount" items="${amountList}"

@@ -17,5 +17,6 @@ public interface AddressDao {
 	public int deleteOldestAddress(String userNum);
 	public int addressDelete(String addrNum);
 	public int addressUpdate(AddressVO avo, String userNum);
+	public void userAddressDelete(String userNum);
 
 }

@@ -1,6 +1,8 @@
+
+
 $(function() {
 
-	
+
 
 	let totalSum = 0;
 

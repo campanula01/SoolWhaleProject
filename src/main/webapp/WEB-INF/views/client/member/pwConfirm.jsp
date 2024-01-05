@@ -58,7 +58,7 @@
   			
   			
 				$.ajax({
-					url : "/member/rePwConfirm",
+					url : "/SoolWhale/member/rePwConfirm",
 					type : "post",
 					data : $("#re_pwd_form").serialize(),
 					dataType : "text",
@@ -73,7 +73,7 @@
 							/* return "/member/pwConfirm"; */
 						}else if(resultData=="성공"){	
 						
-							actionProcess("post", "/member/myInfo");
+							actionProcess("post", "/SoolWhale/member/myInfo");
 								
 							}
 						}

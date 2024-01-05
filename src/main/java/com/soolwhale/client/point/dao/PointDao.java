@@ -13,4 +13,6 @@ public interface PointDao {
 
 	public List<PointVO> pointCheckList(String userNum);
 	public PointVO pointSum(String userNum);
+	
+	public void userPointDelete(String userNum);
 }

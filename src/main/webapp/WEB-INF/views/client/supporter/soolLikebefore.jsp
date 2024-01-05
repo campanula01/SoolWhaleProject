@@ -105,7 +105,7 @@
 				<div class="soollike_list" id="soollike_list" data-num="${like.likeNum}" >
                 		<span class="soollike_img">
                 		<c:if test="${not empty like.project.firstImgFilename}">
-					<img src="/SoolWhale/resources/img/project/uploadStorage/project/${like.project.firstImgFilename}"
+					<img src="/home/tomcat/file/project/${like.project.firstImgFilename}"
 					lass="project_thumbnail_image" />
 					</c:if>
                 		</span>

@@ -25,6 +25,8 @@ public interface PaymentDao {
 	public int paymentUpdate(String merchantUid, String billingKey);
 	
 	public List<PaymentVO> paymentList();
+	public List<PaymentVO> paymentAllList();
+	
 
 	public List<PaymentVO> amountList();
 	
@@ -34,6 +36,8 @@ public interface PaymentDao {
 	
 	public List<PaymentVO> paymentListDetail(String merchantUid, UserVO user);
 	public PaymentVO paymentListDetailChoice(String merchantUid, UserVO user);
+	
+	public void userPaymentDelete(String userNum);
 	
 	
 	

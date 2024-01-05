@@ -203,7 +203,7 @@ $(function() {
         
         // user.getBNum() 대신에 위에서 가져온 bNum을 사용합니다.
         const bNum = ${user.getBNum()};
-        let insertUrl = "/replies/replyInsert";
+        let insertUrl = "/SoolWhale/replies/replyInsert";
 
         if (!rContent) {
             alert('댓글 내용을 입력해주세요.');
@@ -240,7 +240,7 @@ $(function() {
         console.log('Delete button clicked! rNum:', rNum);
 
         $.ajax({
-            url: '/replies/' + rNum,
+            url: '/SoolWhale/replies/' + rNum,
             type: 'DELETE',
             success: function(result) {
                 if (result == "SUCCESS") {
@@ -258,7 +258,7 @@ $(function() {
         console.log("listAll function bNum: " + bNum);
         // 해당 클래스가 있을 경우 삭제하고 다시 댓글 목록을 채우기 위해
         $(".reply").remove();
-        let url = "/replies/all/" + bNum;
+        let url = "/SoolWhale/replies/all/" + bNum;
 
         $.getJSON(url, function(data) {
             console.log(data);
@@ -321,7 +321,7 @@ $(function() {
                             $(this).closest('.reply').remove();
 
                             $.ajax({
-                                url: '/replies/' + rNum,
+                                url: '/SoolWhale/replies/' + rNum,
                                 type: 'DELETE',
                                 success: function(result) {
                                     if (result == "SUCCESS") {

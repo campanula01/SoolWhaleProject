@@ -231,4 +231,10 @@ public class ProjectServiceImpl implements ProjectService {
 		return timestamp;
 	}
 
+	@Override
+	public Integer checkProjectStatus(String userNum) {
+		
+		return projectDao.checkProjectStatus(userNum);
+	}
+
 }

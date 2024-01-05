@@ -88,4 +88,9 @@ delete from w_like where user_num=#{userNum} and project_num=${projectNum}
 <select id="likeStatus" resultType="int">
 select count(distinct like_num) from w_like where user_num=#{userNum} and project_num=${projectNum}
 </select>
+
+	<delete id="userLikeDelete">
+		delete from w_like where user_num=#{userNum}
+	</delete>
+
 </mapper>

@@ -14,7 +14,7 @@
 	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-<title>프로젝트 관리</title>
+<title>결제 관리(수정 중)</title>
 
 <script src="/SoolWhale/resources/js/common/jquery-3.7.0.min.js"></script>
 <script src="/SoolWhale/resources/js/common/jquery-1.12.4.min.js"></script>
@@ -163,7 +163,6 @@ td {
 tr:nth-child(even) {
     background-color: #f2f2f2;
 }
-
 </style>
 <style type="text/css">
 .wrap_myinfo{
@@ -179,21 +178,7 @@ width: 90%}
 
 <script type="text/javascript">
 	$(function() {
-		$(".acceptBtn").click(function() {
-            var projectNum = $(this).data("project-num");
-            var form = $("#" + projectNum + "_form");
-            form.attr("action", "/SoolWhale/project/projectAccept");
-            form.attr("method", "get");
-            form.submit();
-        });
 
-        $(".refuseBtn").click(function() {
-            var projectNum = $(this).data("project-num");
-            var form = $("#" + projectNum + "_form");
-            form.attr("action", "/SoolWhale/project/projectRefuse");
-            form.attr("method", "get");
-            form.submit();
-        });
 
 		/* 기본정보 버튼 클릭 시 처리 이벤트 */
 		$("#admin_main").click(function() {
@@ -201,6 +186,10 @@ width: 90%}
 			location.href = "/SoolWhale/admin/adminMain";
 		});
 
+		$("#maker_li2").click(function() {
+			console.log("판매현황 페이지 호출")
+			location.href = "/SoolWhale/project/projectSellingList";
+		})
 
 		$("#logout").click(function() {
 			location.href = "/SoolWhale/admin/logout"
@@ -212,13 +201,14 @@ width: 90%}
 
 </head>
 <body>
+
 	<div id="wrap">
 		<div class="wrap_center wrap_myinfo">
-			<div id="adminSection" class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark"
+			<div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark"
 				style="width: 280px;">
 				<a href="/"
 					class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-					 <img src="/SoolWhale/resources/img/common/user_img.png" style="width: 50px; height: 50px"><span class="fs-4">술고래</span>
+					<img src="/SoolWhale/resources/img/common/user_img.png" style="width: 50px; height: 50px"> <span class="fs-4">술고래</span>
 				</a>
 				<hr>
 				<ul class="nav nav-pills flex-column mb-auto">
@@ -254,62 +244,39 @@ width: 90%}
 
 				</ul>
 				<hr>
+				<div class="dropdown">
+
+				</div>
 			</div>
 
 			<section class="main_section">
                 <div class="slider">
                     <table>
                         <tr>
-                            <th>사진</th>
-                            <th>제목</th>
-                            <th>소개</th>
-                            <th>목표 금액</th>
-                            <th>시작 날짜</th>
-                            <th>종료 날짜</th>
-                            <th>현황</th>
+                            <th>결제 번호</th>
+                            <th>프로젝트 번호</th>
+                            <th>프로젝트 이름</th>
+                            <th>구매자 번호</th>
+                            <th>구매자 이름</th>
+                            <th>결제일</th>
                             <th colspan="2">관리</th>
                         </tr>
                         <c:choose>
-                            <c:when test="${not empty projectList}">
-                                <c:forEach var="list" items="${projectList}" varStatus="status">
-                                    <c:if test="${list.sts eq '심사중'}">
-                                        <form id="${list.projectNum}_form">
-                                            <input type="hidden" id="projectNum" name="projectNum" value="${list.projectNum}">
+                            <c:when test="${not empty paymentAllList}">
+                                <c:forEach var="payment" items="${paymentAllList}" varStatus="status">
+                                        <form id="${payment.paymentNum}_form">
+                                            <input type="hidden" id="paymentNum" name="paymentNum" value="${payment.paymentNum}">
                                         </form>
                                         <tr>
-                                            <td><a href="/SoolWhale/project/preview?projectNum=${list.projectNum}">
-                                                    <img class="firstImage" src="/home/tomcat/file/project/${list.firstImgFilename}" alt="">
-                                                </a></td>
-                                            <td>${list.title}</td>
-                                            <td>${list.projectDesc}</td>
-                                            <td>${list.targetAmount}</td>
-                                            <td>${list.startDate}</td>
-                                            <td>${list.endDate}</td>
-                                            <td>${list.sts}</td>
-                                            <td><button type="button" class="acceptBtn" data-project-num="${list.projectNum}">승인</button></td>
-                                            <td><button type="button" class="refuseBtn" data-project-num="${list.projectNum}">반려</button></td>
+                                            <td>${payment.paymentNum}</td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td><button type="button" class="acceptBtn" data-project-num="">환불</button></td>
+
                                         </tr>
-                                    </c:if>
-                                </c:forEach>
-                                <c:forEach var="list" items="${projectList}" varStatus="status">
-                                    <c:if test="${list.sts ne '심사중'}">
-                                        <form id="${list.projectNum}_form">
-                                            <input type="hidden" id="projectNum" name="projectNum"
-                                                value="${list.projectNum}">
-                                        </form>
-                                        <tr>
-                                            <td><a href="/SoolWhale/project/preview?projectNum=${list.projectNum}">
-                                                    <img class="firstImage" src="/home/tomcat/file/project/${list.firstImgFilename}" alt="">
-                                                </a></td>
-                                            <td>${list.title}</td>
-                                            <td>${list.projectDesc}</td>
-                                            <td>${list.targetAmount}</td>
-                                            <td>${list.startDate}</td>
-                                            <td>${list.endDate}</td>
-                                            <td>${list.sts}</td>
-                                            <td colspan="2"></td>
-                                        </tr>
-                                    </c:if>
                                 </c:forEach>
                             </c:when>
                         </c:choose>

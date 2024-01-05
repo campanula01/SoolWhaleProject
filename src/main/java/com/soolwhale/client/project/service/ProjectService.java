@@ -34,4 +34,6 @@ public interface ProjectService {
 	
 	public List<ProjectVO> projectSellingList(ProjectVO pvo);
 	public List<ProjectVO> liquorList(ProjectVO pvo);
+	
+ 	public Integer checkProjectStatus(String userNum);
 }

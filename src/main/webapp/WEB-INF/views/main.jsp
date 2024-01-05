@@ -57,9 +57,11 @@
 								<c:forEach var="list" items="${list}" varStatus="status">
 								<c:set var="price" value="${list.targetAmount}" />
 									<c:if test="${not empty list}">
-										<c:if test="${list.liquorType eq '탁주'}">
-											<div class="slider_div">
-												<a href="/SoolWhale/project/fundingDetailView?projectNum=${list.projectNum}">
+									
+										<c:if test="${list.liquorType eq '탁주' and list.sts eq '진행중'}">
+										<a href="/SoolWhale/project/fundingDetailView?projectNum=${list.projectNum}">
+											<div class="slider_div project_slider">
+												
 												<img class="mainImage" src="/home/tomcat/file/project/${list.firstImgFilename}" alt="">
 													<div class="product-title">${list.title}</div>
 													<ul class="product-tage">
@@ -69,8 +71,9 @@
 													<div class="product-price">목표금액: 
                     									<fmt:formatNumber type="number" pattern="#,##0" value="${price}" var="formattedPrice" />
                     										${formattedPrice}원
-                									</div></a>
+                									</div>
 											</div>
+											</a>
 										</c:if>
 									</c:if>
 								</c:forEach>
@@ -85,8 +88,8 @@
 								<c:forEach var="list" items="${list}" varStatus="status">
 								<c:set var="price" value="${list.targetAmount}" />
 									<c:if test="${not empty list}">
-										<c:if test="${list.liquorType eq '증류주'}">
-											<div class="slider_div">
+										<c:if test="${list.liquorType eq '증류주' and list.sts eq '진행중'}">
+											<div class="slider_div project_slider">
 												
 												<a href="/SoolWhale/project/fundingDetailView?projectNum=${list.projectNum}"> <img class="mainImage" src="/home/tomcat/file/project/${list.firstImgFilename}" alt="">
 													<div class="product-title">${list.title}</div>
@@ -113,8 +116,8 @@
 								<c:forEach var="list" items="${list}" varStatus="status">
 								<c:set var="price" value="${list.targetAmount}" />
 									<c:if test="${not empty list}">
-										<c:if test="${list.liquorType eq '과실주'}">
-											<div class="slider_div">
+										<c:if test="${list.liquorType eq '과실주' and list.sts eq '진행중'}">
+											<div class="slider_div project_slider">
 												
 												<a href="/SoolWhale/project/fundingDetailView?projectNum=${list.projectNum}"> <img class="mainImage" src="/home/tomcat/file/project/${list.firstImgFilename}" alt="">
 													<div class="product-title">${list.title}</div>
@@ -141,8 +144,8 @@
 								<c:forEach var="list" items="${list}" varStatus="status">
 								<c:set var="price" value="${list.targetAmount}" />
 									<c:if test="${not empty list}">
-										<c:if test="${list.liquorType eq '약.청주'}">
-											<div class="slider_div">
+										<c:if test="${list.liquorType eq '약.청주' and list.sts eq '진행중'}">
+											<div class="slider_div project_slider">
 												
 												<a href="/SoolWhale/project/fundingDetailView?projectNum=${list.projectNum}"> <img class="mainImage" src="/home/tomcat/file/project/${list.firstImgFilename}" alt="">
 													<div class="product-title">${list.title}</div>

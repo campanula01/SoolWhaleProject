@@ -1,48 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.soolwhale.client.user.dao.UserDao">
-   <resultMap type="user" id="userMap" >
-      <id column="user_num" property="userNum"/>
-      <result column="identity_verification" property="identityVerification"/>
-      <result column="name" property="name"/>
-      <result column="email" property="email"/>
-      <result column="phone_number" property="phoneNumber"/>
-      <result column="password" property="password"/>
-      <result column="profile_img" property="profileImg"/>
-      <result column="use_YN" property="useYN"/>
-      <result column="sex" property="sex"/>
-      <result column="point" property="point"/>
-      <result column="join_date" property="joinDate"/>
-      <result column="u_modify_date" property="uModifyDate"/>
-      <result column="user_nickname" property="userNickname"/>
-   </resultMap>  
+	<resultMap type="user" id="userMap">
+		<id column="user_num" property="userNum" />
+		<result column="identity_verification"
+			property="identityVerification" />
+		<result column="name" property="name" />
+		<result column="email" property="email" />
+		<result column="phone_number" property="phoneNumber" />
+		<result column="password" property="password" />
+		<result column="profile_img" property="profileImg" />
+		<result column="use_YN" property="useYN" />
+		<result column="sex" property="sex" />
+		<result column="point" property="point" />
+		<result column="join_date" property="joinDate" />
+		<result column="u_modify_date" property="uModifyDate" />
+		<result column="user_nickname" property="userNickname" />
+	</resultMap>
 
 	<select id="loginProcess" parameterType="user" resultType="user">
-      SELECT user_num as userNum, name ,user_nickname as userNickname,  id, email
-      FROM w_user
-      WHERE    
-      id = #{id}
-      AND password = #{password}
-   </select>
+		SELECT user_num as userNum, name ,user_nickname as userNickname, id,
+		email
+		FROM w_user
+		WHERE
+		id = #{id}
+		AND password = #{password}
+	</select>
 
-<insert id="joinProcess" parameterType="user"
-        useGeneratedKeys="true" keyProperty="userNum">
-    
-    <selectKey keyProperty="userNum" resultType="String" order="BEFORE">
-        select 'U' || TO_CHAR(SYSDATE, 'YYYYMMDDHH24MISS') || U_SEQ.NEXTVAL from dual
-    </selectKey>
-    
-    INSERT INTO W_USER 
-        (USER_NUM, EMAIL, NAME, USER_NICKNAME, PHONE_NUMBER, PASSWORD, 
-         identity_verification, use_YN, SEX, JOIN_DATE, U_MODIFY_DATE, ID)
-    VALUES 
-        (#{userNum}, #{email}, #{name}, #{userNickname},
-         #{phoneNumber}, #{password}, #{identityVerification}, 'Y',
-         #{sex}, sysdate, sysdate, #{id})
-</insert>
-	
+	<insert id="joinProcess" parameterType="user"
+		useGeneratedKeys="true" keyProperty="userNum">
+
+		<selectKey keyProperty="userNum" resultType="String"
+			order="BEFORE">
+			select 'U' || TO_CHAR(SYSDATE, 'YYYYMMDDHH24MISS') ||
+			U_SEQ.NEXTVAL from
+			dual
+		</selectKey>
+
+		INSERT INTO W_USER
+		(USER_NUM, EMAIL, NAME, USER_NICKNAME, PHONE_NUMBER,
+		PASSWORD,
+		identity_verification, use_YN, SEX, JOIN_DATE, U_MODIFY_DATE,
+		ID)
+		VALUES
+		(#{userNum}, #{email}, #{name}, #{userNickname},
+		#{phoneNumber}, #{password}, #{identityVerification}, 'Y',
+		#{sex},
+		sysdate, sysdate, #{id})
+	</insert>
+
 	<select id="checkPhone" resultType="int">
-		SELECT COUNT(*) FROM w_user WHERE PHONE_NUMBER =#{phoneNumber,
+		SELECT COUNT(*) FROM w_user
+		WHERE PHONE_NUMBER =#{phoneNumber,
 		jdbcType=VARCHAR}
 	</select>
 
@@ -56,103 +65,104 @@
 	<select id="checkEmail" parameterType="String" resultType="int">
 		select count(*) from w_user where email = #{email}
 	</select>
-	
-	
-	
+
+
+
 	<select id="userData" parameterType="String" resultMap="userMap">
-		select name, email, phone_number, user_num from w_user where user_num=#{userNum}
+		select
+		id,name, email, phone_number, user_num, user_nickname,password from
+		w_user where
+		user_num=#{userNum}
 	</select>
-	
-	
+
+
 	<insert id="joinPoint" parameterType="point">
-	   	<selectKey keyProperty="pointNum" resultType="String" order="BEFORE">
-        	select 'P' || TO_CHAR(SYSDATE, 'YYYYMMDDHH24MISS') || P_SEQ.NEXTVAL from dual
-    	</selectKey>
-        INSERT INTO user_point(point_num, point_sum, point_date, point_desc, point_delete, user_num, payment_num) 
-        values(#{pointNum}, #{pointSum}, sysdate+10,'가입 축하', sysdate+375, #{userNum}, default)
-    </insert> 
-    
-    
-    
-    
-    
-    
-  <!--   <update id="myInfoUpdate" parameterType="user">
-		update w_user
-		set password= #{re_pwd}
-		where email=#{email}
-	
-	</update>
-	
-	
+		<selectKey keyProperty="pointNum" resultType="String"
+			order="BEFORE">
+			select 'P' || TO_CHAR(SYSDATE, 'YYYYMMDDHH24MISS') ||
+			P_SEQ.NEXTVAL from
+			dual
+		</selectKey>
+		INSERT INTO user_point(point_num, point_sum, point_date, point_desc,
+		point_delete, user_num, payment_num)
+		values(#{pointNum}, #{pointSum},
+		sysdate+10,'가입 축하', sysdate+375, #{userNum}, default)
+	</insert>
+
+
+
+
+
+
+	<!-- <update id="myInfoUpdate" parameterType="user"> update w_user set password= 
+		#{re_pwd} where email=#{email} </update> <select id="upPwdConfirm" parameterType="user" 
+		resultType="int"> SELECT NVL(( SELECT 1 FROM w_user WHERE email = #{email} 
+		AND password=#{ex_pwd} ), 0) as state FROM dual </select> <update id="userDelete" 
+		parameterType="user"> update w_user set use_yn = 'N' where email = #{email} 
+		</update> <select id="rePwdConfirm" parameterType="user" resultType="int"> 
+		SELECT NVL(( SELECT 1 FROM w_user WHERE email = #{email} AND password=#{password} 
+		), 0) as state FROM dual </select> <select id="myInfoPage" parameterType 
+		="user" resultMap="userMap"> select user_num, name, email, phone_number, 
+		password, user_nickname from w_user where email = #{email} </select> -->
+
+
 	<select id="upPwdConfirm" parameterType="user" resultType="int">
 		SELECT
 		NVL((
 		SELECT 1 FROM w_user
-		WHERE email = #{email} AND password=#{ex_pwd}
-		), 0) as state
-		FROM dual
-	</select>
-	
-		<update id="userDelete" parameterType="user">
-		update w_user
-		set use_yn = 'N' 
-		where email = #{email}
-	</update>
-    
-    	<select id="rePwdConfirm" parameterType="user" resultType="int">
-		SELECT
-		NVL((
-		SELECT 1 FROM w_user
-		WHERE email = #{email} AND password=#{password}
+		WHERE email = #{email} AND
+		password=#{ex_pwd}
 		), 0) as state
 		FROM dual
 	</select>
 
-	<select id="myInfoPage" parameterType ="user" resultMap="userMap">
-		select user_num, name, email, phone_number, password, user_nickname
-		from w_user
-		where email = #{email}
-	
-	</select>  -->
-    
-    
-	<select id="upPwdConfirm" parameterType="user" resultType="int">
+	<select id="rePwdConfirm" parameterType="user" resultType="int">
 		SELECT
 		NVL((
 		SELECT 1 FROM w_user
-		WHERE email = #{email} AND password=#{ex_pwd}
-		), 0) as state
-		FROM dual
-	</select>
-	
-		<select id="rePwdConfirm" parameterType="user" resultType="int">
-		SELECT
-		NVL((
-		SELECT 1 FROM w_user
-		WHERE email = #{email} AND password=#{password}
+		WHERE email = #{email} AND
+		password=#{password}
 		), 0) as state
 		FROM dual
 	</select>
 
-	<select id="myInfoPage" parameterType ="user" resultMap="userMap">
-		select user_num, name, email, phone_number, password, user_nickname,id
-		from w_user
+	<select id="myInfoPage" parameterType="user" resultMap="userMap">
+		select
+		user_num, name, email, phone_number, password, user_nickname,id
+		from
+		w_user
 		where email = #{email}
-	
-	</select> 
 
-	
+	</select>
+
+
 	<update id="userDelete" parameterType="user">
 		update w_user
-		set use_yn = 'N' 
+		set use_yn =
+		'N'
 		where email = #{email}
 	</update>
-    
-    
 
-    
-    
-    
+	<delete id="userCompleteDelete">
+		delete from w_user where user_num=#{userNum}
+	</delete>
+
+
+	<select id="userList" resultMap="userMap">
+		SELECT user_num, name, id,
+		email, phone_number, join_date, user_nickname
+		from w_user
+	</select>
+
+
+
+	<update id="editProcess" parameterType="user">
+
+		update w_user set user_nickname = #{userNickname}, id=#{id},
+		password=#{password}, email=#{email}, phone_number = #{phoneNumber}
+		where user_num= #{userNum}
+
+	</update>
+
 
 </mapper>

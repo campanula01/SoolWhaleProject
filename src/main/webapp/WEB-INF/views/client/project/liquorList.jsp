@@ -37,12 +37,14 @@
 												src="/home/tomcat/file/project/${list.firstImgFilename}"
 												alt="">
 												<div class="product-title">${list.title}</div>
-											</a>
-											<div class="hr"></div>
+																																			<div class="hr"></div>
 											<ul class="product-tage">
 												<li>${list.projectDesc}</li>
 
 											</ul>
+
+											</a>
+
 										</div>
 									</c:if>
 								</c:forEach>

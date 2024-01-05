@@ -70,4 +70,9 @@ VALUES (#{addrNum}, #{avo.zipcode}, #{avo.addr}, #{avo.addrDetail}, #{avo.recipi
         WHERE addr_num = #{avo.addrNum}
     </update>
     
+    	<delete id="userAddressDelete">
+		delete from w_address where user_num=#{userNum}
+	</delete>
+    
+    
 </mapper>

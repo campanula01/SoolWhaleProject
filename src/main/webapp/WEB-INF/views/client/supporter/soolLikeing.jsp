@@ -31,7 +31,7 @@
   		<link rel="stylesheet" href="/SoolWhale/resources/css/common/header.css">
   		<link rel="stylesheet" href="/SoolWhale/resources/css/common/pop.css">
   			<script src="/SoolWhale/resources/js/common/sidebutton.js"></script>
- <script src="/SoolWhale/resources/js/supporter/soolLike.js"></script>
+ 	<script src="/SoolWhale/resources/js/supporter/soolLike.js"></script>
   		<script src="/SoolWhale/resources/js/common/common.js"></script>
   		<script src="/SoolWhale/resources/js/common/pop.js"></script>
 
@@ -109,7 +109,7 @@
 				<div class="soollike_list" id="soollike_list" data-num="${like.likeNum}" >
                 		<span class="soollike_img">
                 		<c:if test="${not empty like.project.firstImgFilename}">
-					<img src="/SoolWhale/resources/img/project/uploadStorage/project/${like.project.firstImgFilename}"
+					<img src="/home/tomcat/file/project/${like.project.firstImgFilename}"
 					lass="project_thumbnail_image" />
 					</c:if>
                 		</span>
@@ -124,12 +124,7 @@
                     </span> 
                     <span class="project_title">${like.project.title}</spsan>
                   </li>
-                  <li class="price">  
-                    <div class="progress_bar">
-                        <div class="bar"></div>
-                        <div class="rate" data-rate="60"></div>
-                      </div>
-                    </li>
+
                 </ul>  
                 
                 <ul class="tage_ul">

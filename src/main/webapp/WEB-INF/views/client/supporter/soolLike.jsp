@@ -150,7 +150,7 @@
 									<span class="soollike_img"> <c:if
 											test="${not empty like.project.firstImgFilename}">
 											<img
-												src="/resources/img/project/uploadStorage/project/${like.project.firstImgFilename}"
+												src="/home/tomcat/file/project/${like.project.firstImgFilename}"
 												class="project_thumbnail_image" />
 										</c:if>
 									</span>
@@ -161,14 +161,8 @@
 													<i class="fa-regular fa-heart"></i> <i
 													class="fa-solid fa-heart" id="fa-solid"
 													data-num="${like.likeNum}"></i>
-											</span> <span class="project_title">${like.project.title}/
-													${like.likeNum} </spsan></li>
-											<li class="price">
-												<div class="progress_bar">
-													<div class="bar"></div>
-													<div class="rate" data-rate="60"></div>
-												</div>
-											</li>
+											</span> <span class="project_title">${like.project.title} </span></li>
+
 										</ul>
 
 										<ul class="tage_ul">

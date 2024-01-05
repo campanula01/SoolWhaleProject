@@ -254,7 +254,7 @@ input[type=text]:focus, textarea:focus {
 				$("#f_updateForm").attr({
 					"method" : "post",
 					"enctype" : "multipart/form-data",
-					"action" : "/board/update"
+					"action" : "/SoolWhale/board/update"
 				});
 				$("#f_updateForm").submit();
 			}

@@ -56,7 +56,7 @@
 
  			       form.attr({
 			            "method": "get",
-			            "action":"/member/inquiryUpdate"
+			            "action":"/SoolWhale/member/inquiryUpdate"
 			        });
 
  			     	 form.submit();

@@ -210,7 +210,7 @@ div.text-center{
 	    // 상세 페이지로 이동하기 위해 폼을 제출합니다.
 	    $("#detailForm").attr({
 	        "method": "get",
-	        "action": "/board/detail"
+	        "action": "/SoolWhale/board/detail"
 	    }).submit();
 	
 	    // 또는 window.location을 직접 사용하여 이동할 수도 있습니다.
@@ -234,7 +234,7 @@ div.text-center{
 
 		$("#f_search").attr({
 			"method" : "get",
-			"action" : "/board/list"
+			"action" : "/SoolWhale/board/list"
 		})
 		$("#f_search").submit();
 	}
