@@ -421,6 +421,15 @@ public class PaymentController {
 		    }
 				
 		}
+		
+	
+
+			//배포후 cron사용
+		    @GetMapping("/triggerScheduledPayment")
+		    public ResponseEntity<String> triggerScheduledPayment() {
+		        paymentSchedulerService.executeScheduledPayment();
+		        return ResponseEntity.ok("Scheduled payments executed successfully.");
+		    }
 	
 	
 }

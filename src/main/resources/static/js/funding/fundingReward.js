@@ -137,8 +137,6 @@ $(function() {
 
 				totalPriceElement.text(formattedPricePerUnit + " 원");
 				updateTotalSum();
-				console.log(pricePerUnit);
-				console.log(productName);
 
 			} else {
 				targetContent.css('display', 'none');

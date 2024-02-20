@@ -419,12 +419,9 @@ $(function() {
 			let pointPlusData = {
 				pointSum: usablePoint + pointPlus
 			}
-
 			let pointMinusData = {
 				pointSum: usablePoint - pointDiscount
 			}
-
-
 
 			$.ajax({
 				url: "/SoolWhale/payment/paymentInsert?projectNum=" + projectNum,

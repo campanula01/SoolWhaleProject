@@ -39,7 +39,7 @@ public class PaymentSchedulerService {
 	        scheduledPaymentRepository.save(payment);  // 예정된 결제를 데이터베이스에 저장
 	    }
 
-	    @Scheduled(fixedDelay = 60000)  // 1분마다 실행
+	    //@Scheduled(fixedDelay = 60000)  // 1분마다 실행
 	    public void executeScheduledPayment() {
 	        List<ScheduledPayment> paymentsToExecute = scheduledPaymentRepository.findAllByExecuteTimestampBefore(new Timestamp(System.currentTimeMillis()));
 
